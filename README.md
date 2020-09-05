@@ -3,6 +3,7 @@ Ripsight is a 2D top down game that is currently under development. This page wi
 
 ## Dependencies
   * [SDL2](https://www.libsdl.org/)
+  * [SDL_image](https://www.libsdl.org/projects/SDL_image/)
   
 ## License
 [MIT License](https://github.com/iozsaygi/ripsight/blob/master/LICENSE)
