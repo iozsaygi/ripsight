@@ -3,6 +3,7 @@
 #define ENGINE_H
 
 // core
+#include "core/common/component.h"
 #include "core/common/world.h"
 
 // public

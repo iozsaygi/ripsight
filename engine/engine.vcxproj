@@ -175,6 +175,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\core\common\component.h" />
     <ClInclude Include="src\core\common\world.h" />
     <ClInclude Include="src\engine.h" />
     <ClInclude Include="src\public\engine_entry.h" />

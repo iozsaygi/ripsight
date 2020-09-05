@@ -48,11 +48,15 @@ namespace engine
 
 	void World::Render()
 	{
-		SDL_SetRenderDrawColor(m_EngineEntry->GetRenderer(), 0, 0, 0, 255);
-		SDL_RenderClear(m_EngineEntry->GetRenderer());
+		auto renderer = m_EngineEntry->GetRenderer();
+		if (renderer != nullptr)
+		{
+			SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+			SDL_RenderClear(renderer);
 
-		// Render actors here.
+			// Render actors here.
 
-		SDL_RenderPresent(m_EngineEntry->GetRenderer());
+			SDL_RenderPresent(renderer);
+		}
 	}
 }
