@@ -1,3 +1,4 @@
+#include <SDL_image.h>
 #include "engine_entry.h"
 
 namespace engine
@@ -19,6 +20,13 @@ namespace engine
 			return;
 		}
 
+		int imgFlags = IMG_INIT_PNG;
+		if (!(IMG_Init(imgFlags) & imgFlags))
+		{
+			SDL_Log("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
+			return;
+		}
+
 		SDL_SetWindowTitle(m_Window, title.c_str());
 		SDL_Log("Engine entry created!");
 	}
@@ -27,6 +35,7 @@ namespace engine
 	{
 		SDL_Log("Shutting down engine entry!");
 
+		IMG_Quit();
 		SDL_DestroyRenderer(m_Renderer);
 		SDL_DestroyWindow(m_Window);
 		SDL_Quit();
