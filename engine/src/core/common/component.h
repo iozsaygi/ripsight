@@ -3,6 +3,8 @@
 
 namespace engine
 {
+	class Actor;
+
 	// Components are basic piece of any actor.
 	class Component
 	{
@@ -18,6 +20,11 @@ namespace engine
 
 		// Will be called when world gets disabled. (Only once)
 		inline virtual void OnShutdown() {}
+
+		inline Actor* GetOwner() { return m_Owner; }
+
+	private:
+		Actor* m_Owner = nullptr;
 	};
 }
 

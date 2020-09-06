@@ -27,12 +27,18 @@
     <ClInclude Include="src\core\common\component.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\core\common\actor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\public\engine_entry.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\core\common\world.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\common\actor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
