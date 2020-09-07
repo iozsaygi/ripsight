@@ -8,6 +8,14 @@ namespace engine
 		m_Components = std::vector<Component*>();
 	}
 
+	Actor::~Actor()
+	{
+		for (auto component : m_Components)
+			delete component;
+
+		m_Components.clear();
+	}
+
 	void Actor::AddComponent(Component* component)
 	{
 		assert(component != nullptr);

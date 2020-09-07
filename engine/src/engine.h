@@ -2,6 +2,9 @@
 #ifndef ENGINE_H
 #define ENGINE_H
 
+// blueprints
+#include "core/blueprints/components/sprite_renderer.h"
+
 // core
 #include "core/common/actor.h"
 #include "core/common/component.h"

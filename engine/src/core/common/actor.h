@@ -11,6 +11,7 @@ namespace engine
 	{
 	public:
 		Actor();
+		~Actor();
 
 		// Adds given component to the actor.
 		void AddComponent(Component* component);

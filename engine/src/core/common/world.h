@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "public/engine_entry.h"
+#include "core/blueprints/components/sprite_renderer.h"
 #include "core/common/actor.h"
 
 namespace engine
@@ -13,6 +14,7 @@ namespace engine
 	public:
 		World(EngineEntry* engineEntry);
 		World(EngineEntry* engineEntry, bool isActive);
+		~World();
 
 		// Will be called every frame to update components of actors in world.
 		void Tick();
@@ -23,10 +25,14 @@ namespace engine
 		// Adds given actor to the world. Only call while the game/engine is running.
 		void AddActorRuntime(Actor* actor);
 
+		// Adds the given sprite renderer to render queue of world.
+		void SubscribeToRenderQueue(SpriteRenderer* spriteRenderer);
+
 	private:
 		bool m_IsActive = false;
 		EngineEntry* m_EngineEntry = nullptr;
 		std::vector<Actor*> m_Actors;
+		std::vector<SpriteRenderer*> m_RenderQueue;
 
 		void ProcessEvents();
 		void UpdateActors(float deltaTime);

@@ -30,6 +30,12 @@
     <ClInclude Include="src\core\common\actor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\core\blueprints\components\sprite_renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\img.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\public\engine_entry.cpp">
@@ -39,6 +45,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\core\common\actor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\blueprints\components\sprite_renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\img.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
