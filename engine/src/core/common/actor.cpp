@@ -1,5 +1,6 @@
 #include <assert.h>
 #include "actor.h"
+#include <SDL.h>
 
 namespace engine
 {

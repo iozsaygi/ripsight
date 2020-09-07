@@ -9,6 +9,8 @@ namespace engine
 	class Component
 	{
 	public:
+		virtual ~Component() {}
+
 		// Will be called before world starts ticking. (Only once)
 		inline virtual void Birth() {}
 
