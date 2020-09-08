@@ -4,11 +4,6 @@
 
 namespace engine
 {
-	SpriteRenderer::SpriteRenderer(const std::string& spritePath)
-	{
-		m_Path = spritePath;
-	}
-
 	SpriteRenderer::~SpriteRenderer()
 	{
 		SDL_DestroyTexture(m_InitialSprite);
@@ -23,13 +18,15 @@ namespace engine
 
 	void SpriteRenderer::Render(SDL_Renderer* renderer)
 	{
-		// This is temporary calculation.
-		SDL_Rect renderRectangle;
-		renderRectangle.x = 200;
-		renderRectangle.y = 250;
-		renderRectangle.w = 64;
-		renderRectangle.h = 64;
+		if (m_OwnerTransform != nullptr)
+		{
+			SDL_Rect renderRectangle;
+			renderRectangle.x = m_OwnerTransform->GetPosition().GetX();
+			renderRectangle.y = m_OwnerTransform->GetPosition().GetY();
+			renderRectangle.w = m_OwnerTransform->GetScale().GetX();
+			renderRectangle.h = m_OwnerTransform->GetScale().GetY();
 
-		SDL_RenderCopy(renderer, m_InitialSprite, nullptr, &renderRectangle);
+			SDL_RenderCopy(renderer, m_InitialSprite, nullptr, &renderRectangle);
+		}
 	}
 }

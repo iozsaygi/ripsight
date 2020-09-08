@@ -36,6 +36,12 @@
     <ClInclude Include="src\utils\img.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\math\vector2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\blueprints\components\transform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\public\engine_entry.cpp">
@@ -51,6 +57,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\utils\img.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\math\vector2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\blueprints\components\transform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

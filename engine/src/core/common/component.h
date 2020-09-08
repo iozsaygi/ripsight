@@ -9,6 +9,7 @@ namespace engine
 	class Component
 	{
 	public:
+		Component(Actor* owner) { m_Owner = owner; }
 		virtual ~Component() {}
 
 		// Will be called before world starts ticking. (Only once)

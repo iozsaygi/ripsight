@@ -2,6 +2,8 @@
 #define ACTOR_H
 
 #include <vector>
+#include <typeinfo>
+#include <map>
 #include "component.h"
 
 namespace engine
@@ -19,8 +21,15 @@ namespace engine
 		// Returns the all components of actor.
 		std::vector<Component*> GetComponents();
 
+		template <typename T>
+		T* GetComponent()
+		{
+			return static_cast<T*>(m_ComponentMap[&typeid(T)]);
+		}
+
 	private:
 		std::vector<Component*> m_Components;
+		std::map<const std::type_info*, Component*> m_ComponentMap;
 	};
 }
 

@@ -176,17 +176,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\core\blueprints\components\sprite_renderer.h" />
+    <ClInclude Include="src\core\blueprints\components\transform.h" />
     <ClInclude Include="src\core\common\actor.h" />
     <ClInclude Include="src\core\common\component.h" />
     <ClInclude Include="src\core\common\world.h" />
     <ClInclude Include="src\engine.h" />
+    <ClInclude Include="src\math\vector2D.h" />
     <ClInclude Include="src\public\engine_entry.h" />
     <ClInclude Include="src\utils\img.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\core\blueprints\components\sprite_renderer.cpp" />
+    <ClCompile Include="src\core\blueprints\components\transform.cpp" />
     <ClCompile Include="src\core\common\actor.cpp" />
     <ClCompile Include="src\core\common\world.cpp" />
+    <ClCompile Include="src\math\vector2D.cpp" />
     <ClCompile Include="src\public\engine_entry.cpp" />
     <ClCompile Include="src\utils\img.cpp" />
   </ItemGroup>

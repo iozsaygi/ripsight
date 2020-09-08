@@ -4,7 +4,9 @@
 #include <string>
 #include <SDL.h>
 #include <SDL_image.h>
+#include "core/common/actor.h"
 #include "core/common/component.h"
+#include "core/blueprints/components/transform.h"
 
 namespace engine
 {
@@ -12,7 +14,12 @@ namespace engine
 	class SpriteRenderer : public Component
 	{
 	public:
-		SpriteRenderer(const std::string& spritePath);
+		inline SpriteRenderer(Actor* owner, const std::string& spritePath) : Component(owner) 
+		{
+			m_Path = spritePath; 
+			m_OwnerTransform = GetOwner()->GetComponent<Transform>();
+		}
+
 		~SpriteRenderer();
 
 		void UpdateRenderer(SDL_Renderer* renderer);
@@ -22,6 +29,7 @@ namespace engine
 		std::string m_Path;
 		SDL_Renderer* m_Renderer = nullptr;
 		SDL_Texture* m_InitialSprite = nullptr;
+		Transform* m_OwnerTransform = nullptr;
 	};
 }
 
