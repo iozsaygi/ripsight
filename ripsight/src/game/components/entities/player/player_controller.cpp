@@ -28,4 +28,14 @@ void PlayerController::OnTick(float deltaTime)
 	{
 		m_OwnerTransform->GetPosition().Add(engine::Vector2D(m_Velocity.GetX() + deltaTime, 0.0f));
 	}
+
+	if (engine::Input::MouseState.GetIsLeftMouseButtonDown())
+	{
+		SDL_Log("Left mouse button triggered!");
+	}
+
+	if (engine::Input::MouseState.GetIsRightMouseButtonDown())
+	{
+		SDL_Log("Right mouse button triggered!");
+	}
 }

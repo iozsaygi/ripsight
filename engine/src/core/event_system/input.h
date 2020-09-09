@@ -3,6 +3,7 @@
 
 #include <SDL.h>
 #include "keycode.h"
+#include "mouse_state.h"
 
 namespace engine
 {
@@ -13,6 +14,7 @@ namespace engine
 		static KeyCode AKeyCode;
 		static KeyCode SKeyCode;
 		static KeyCode DKeyCode;
+		static MouseState MouseState;
 
 		// Do not call this function from client side.
 		static void UpdateKeyStates(SDL_Event& event);

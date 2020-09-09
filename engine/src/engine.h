@@ -12,6 +12,7 @@
 #include "core/common/world.h"
 #include "core/event_system/input.h"
 #include "core/event_system/keycode.h"
+#include "core/event_system/mouse_state.h"
 
 // math
 #include "math/vector2D.h"

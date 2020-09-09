@@ -6,6 +6,7 @@ namespace engine
 	KeyCode Input::AKeyCode;
 	KeyCode Input::SKeyCode;
 	KeyCode Input::DKeyCode;
+	MouseState Input::MouseState;
 
 	void Input::UpdateKeyStates(SDL_Event& event)
 	{
@@ -49,6 +50,28 @@ namespace engine
 			case SDLK_d:
 				DKeyCode.UpdateIsKeyDown(false);
 				break;
+			}
+		}
+		else if (event.type == SDL_MOUSEBUTTONDOWN)
+		{
+			if (event.button.button == SDL_BUTTON_LEFT)
+			{
+				MouseState.SetIsLeftMouseButtonDown(true);
+			}
+			else if (event.button.button == SDL_BUTTON_RIGHT)
+			{
+				MouseState.SetIsRightMouseButtonDown(true);
+			}
+		}
+		else if (event.type == SDL_MOUSEBUTTONUP)
+		{
+			if (event.button.button == SDL_BUTTON_LEFT)
+			{
+				MouseState.SetIsLeftMouseButtonDown(false);
+			}
+			else if (event.button.button == SDL_BUTTON_RIGHT)
+			{
+				MouseState.SetIsRightMouseButtonDown(false);
 			}
 		}
 	}
