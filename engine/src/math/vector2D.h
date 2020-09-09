@@ -16,6 +16,21 @@ namespace engine
 		float GetX();
 		float GetY();
 
+		Vector2D& Add(const Vector2D& other);
+		Vector2D& Subtract(const Vector2D& other);
+		Vector2D& Multiply(const Vector2D& other);
+		Vector2D& Divide(const Vector2D& other);
+
+		friend Vector2D& operator+(Vector2D& source, const Vector2D& other);
+		friend Vector2D& operator-(Vector2D& source, const Vector2D& other);
+		friend Vector2D& operator*(Vector2D& source, const Vector2D& other);
+		friend Vector2D& operator/(Vector2D& source, const Vector2D& other);
+
+		Vector2D& operator+=(const Vector2D& other);
+		Vector2D& operator-=(const Vector2D& other);
+		Vector2D& operator*=(const Vector2D& other);
+		Vector2D& operator/=(const Vector2D& other);
+
 	private:
 		float m_X;
 		float m_Y;

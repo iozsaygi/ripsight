@@ -1,5 +1,6 @@
 #include <assert.h>
 #include <SDL.h>
+#include "core/event_system/input.h"
 #include "world.h"
 
 namespace engine
@@ -104,6 +105,8 @@ namespace engine
 		{
 			if (event.type == SDL_QUIT)
 				m_IsActive = false;
+
+			Input::UpdateKeyStates(event);
 		}
 	}
 

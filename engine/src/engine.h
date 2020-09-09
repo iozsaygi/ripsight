@@ -10,6 +10,8 @@
 #include "core/common/actor.h"
 #include "core/common/component.h"
 #include "core/common/world.h"
+#include "core/event_system/input.h"
+#include "core/event_system/keycode.h"
 
 // math
 #include "math/vector2D.h"

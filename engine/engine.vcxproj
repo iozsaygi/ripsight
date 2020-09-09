@@ -180,6 +180,8 @@
     <ClInclude Include="src\core\common\actor.h" />
     <ClInclude Include="src\core\common\component.h" />
     <ClInclude Include="src\core\common\world.h" />
+    <ClInclude Include="src\core\event_system\input.h" />
+    <ClInclude Include="src\core\event_system\keycode.h" />
     <ClInclude Include="src\engine.h" />
     <ClInclude Include="src\math\vector2D.h" />
     <ClInclude Include="src\public\engine_entry.h" />
@@ -190,6 +192,8 @@
     <ClCompile Include="src\core\blueprints\components\transform.cpp" />
     <ClCompile Include="src\core\common\actor.cpp" />
     <ClCompile Include="src\core\common\world.cpp" />
+    <ClCompile Include="src\core\event_system\input.cpp" />
+    <ClCompile Include="src\core\event_system\keycode.cpp" />
     <ClCompile Include="src\math\vector2D.cpp" />
     <ClCompile Include="src\public\engine_entry.cpp" />
     <ClCompile Include="src\utils\img.cpp" />
