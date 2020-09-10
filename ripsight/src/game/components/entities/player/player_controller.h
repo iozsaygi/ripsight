@@ -15,6 +15,7 @@ public:
 private:
 	engine::Vector2D m_Velocity;
 	engine::Transform* m_OwnerTransform = nullptr;
+	engine::SpriteRenderer* m_OwnerSpriteRenderer = nullptr;
 };
 
 #endif // !PLAYER_CONTROLLER_H

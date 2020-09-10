@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
 
 	// Craft the player and add it to the test world.
 	engine::Actor* player = new engine::Actor();
-	engine::Transform* playerTransform = new engine::Transform(player, engine::Vector2D(300, 200), engine::Vector2D(64, 64));
+	engine::Transform* playerTransform = new engine::Transform(player, engine::Vector2D(300, 200), engine::Vector2D(48, 48));
 	player->AddComponent(playerTransform);
 	engine::SpriteRenderer* spriteRenderer = new engine::SpriteRenderer(player, "assets/imgs/entities/player/Player.png");
 	PlayerController* playerController = new PlayerController(player, engine::Vector2D(3.0f, 3.0f));

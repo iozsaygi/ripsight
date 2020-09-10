@@ -24,12 +24,14 @@ namespace engine
 
 		void UpdateRenderer(SDL_Renderer* renderer);
 		void Render(SDL_Renderer* renderer);
+		void UpdateRenderAngle(double renderAngle);
 
 	private:
 		std::string m_Path;
 		SDL_Renderer* m_Renderer = nullptr;
 		SDL_Texture* m_InitialSprite = nullptr;
 		Transform* m_OwnerTransform = nullptr;
+		double m_RenderAngle = 0.0;
 	};
 }
 

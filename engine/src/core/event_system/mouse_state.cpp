@@ -21,4 +21,11 @@ namespace engine
 	{
 		m_IsRightButtonDown = status;
 	}
+
+	Vector2D MouseState::GetMousePosition()
+	{
+		int x, y = 0;
+		SDL_GetMouseState(&x, &y);
+		return Vector2D(x, y);
+	}
 }

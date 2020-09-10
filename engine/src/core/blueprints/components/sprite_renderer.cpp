@@ -16,6 +16,11 @@ namespace engine
 		m_InitialSprite = LoadImage(m_Renderer, m_Path);
 	}
 
+	void SpriteRenderer::UpdateRenderAngle(double renderAngle)
+	{
+		m_RenderAngle = renderAngle;
+	}
+
 	void SpriteRenderer::Render(SDL_Renderer* renderer)
 	{
 		if (m_OwnerTransform != nullptr)
@@ -26,7 +31,7 @@ namespace engine
 			renderRectangle.w = m_OwnerTransform->GetScale().GetX();
 			renderRectangle.h = m_OwnerTransform->GetScale().GetY();
 
-			SDL_RenderCopy(renderer, m_InitialSprite, nullptr, &renderRectangle);
+			SDL_RenderCopyEx(renderer, m_InitialSprite, nullptr, &renderRectangle, m_RenderAngle, nullptr, SDL_FLIP_NONE);
 		}
 	}
 }
