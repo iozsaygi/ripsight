@@ -9,10 +9,11 @@ namespace engine
 		SDL_DestroyTexture(m_InitialSprite);
 	}
 
-	void SpriteRenderer::UpdateRenderer(SDL_Renderer* renderer)
+	void SpriteRenderer::Birth()
 	{
-		assert(renderer != nullptr);
-		m_Renderer = renderer;
+		assert(GetOwner() != nullptr);
+		m_OwnerTransform = GetOwner()->GetComponent<Transform>();
+		m_Renderer = m_EngineEntry->GetRenderer();
 		m_InitialSprite = LoadImage(m_Renderer, m_Path);
 	}
 

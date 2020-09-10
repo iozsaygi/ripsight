@@ -25,14 +25,10 @@ namespace engine
 		// Adds given actor to the world. Only call while the game/engine is running.
 		void AddActorRuntime(Actor* actor);
 
-		// Adds the given sprite renderer to render queue of world.
-		void SubscribeToRenderQueue(SpriteRenderer* spriteRenderer);
-
 	private:
 		bool m_IsActive = false;
 		EngineEntry* m_EngineEntry = nullptr;
 		std::vector<Actor*> m_Actors;
-		std::vector<SpriteRenderer*> m_RenderQueue;
 
 		void ProcessEvents();
 		void UpdateActors(float deltaTime);

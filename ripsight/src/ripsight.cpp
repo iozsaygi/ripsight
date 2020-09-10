@@ -13,21 +13,20 @@ int main(int argc, char* argv[])
 	engine::Actor* background = new engine::Actor();
 	engine::Transform* backgroundTransform = new engine::Transform(background, engine::Vector2D::Zero(), engine::Vector2D(800, 600));
 	background->AddComponent(backgroundTransform);
-	engine::SpriteRenderer* backgroundRenderer = new engine::SpriteRenderer(background, "assets/imgs/entities/background/background.png");
+	engine::SpriteRenderer* backgroundRenderer = new engine::SpriteRenderer(background, engineEntry, "assets/imgs/entities/background/background.png");
 	background->AddComponent(backgroundRenderer);
-	world->SubscribeToRenderQueue(backgroundRenderer);
+	world->AddActor(background);
 
 	// Craft the player and add it to the test world.
 	engine::Actor* player = new engine::Actor();
 	engine::Transform* playerTransform = new engine::Transform(player, engine::Vector2D(300, 200), engine::Vector2D(48, 48));
 	player->AddComponent(playerTransform);
-	engine::SpriteRenderer* spriteRenderer = new engine::SpriteRenderer(player, "assets/imgs/entities/player/player.png");
+	engine::SpriteRenderer* spriteRenderer = new engine::SpriteRenderer(player, engineEntry, "assets/imgs/entities/player/player.png");
 	PlayerController* playerController = new PlayerController(player, engine::Vector2D(3.0f, 3.0f));
 	player->AddComponent(playerController);
 
 	player->AddComponent(spriteRenderer);
 	world->AddActor(player);
-	world->SubscribeToRenderQueue(spriteRenderer);
 
 	// Start the world.
 	world->Tick();

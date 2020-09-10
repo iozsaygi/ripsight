@@ -7,6 +7,7 @@
 #include "core/common/actor.h"
 #include "core/common/component.h"
 #include "core/blueprints/components/transform.h"
+#include "public/engine_entry.h"
 
 namespace engine
 {
@@ -14,15 +15,17 @@ namespace engine
 	class SpriteRenderer : public Component
 	{
 	public:
-		inline SpriteRenderer(Actor* owner, const std::string& spritePath) : Component(owner) 
+		inline SpriteRenderer(Actor* owner, EngineEntry* engineEntry, const std::string& spritePath) : Component(owner) 
 		{
 			m_Path = spritePath; 
 			m_OwnerTransform = GetOwner()->GetComponent<Transform>();
+			m_EngineEntry = engineEntry;
 		}
 
 		~SpriteRenderer();
 
-		void UpdateRenderer(SDL_Renderer* renderer);
+		void Birth() override;
+
 		void Render(SDL_Renderer* renderer);
 		void UpdateRenderAngle(double renderAngle);
 
@@ -32,6 +35,7 @@ namespace engine
 		SDL_Texture* m_InitialSprite = nullptr;
 		Transform* m_OwnerTransform = nullptr;
 		double m_RenderAngle = 0.0;
+		EngineEntry* m_EngineEntry = nullptr;
 	};
 }
 

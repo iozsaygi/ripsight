@@ -10,7 +10,6 @@ namespace engine
 		assert(engineEntry != nullptr);
 		m_EngineEntry = engineEntry;
 		m_Actors = std::vector<Actor*>();
-		m_RenderQueue = std::vector<SpriteRenderer*>();
 	}
 
 	World::World(EngineEntry* engineEntry, bool isActive)
@@ -18,7 +17,6 @@ namespace engine
 		assert(engineEntry != nullptr);
 		m_EngineEntry = engineEntry;
 		m_Actors = std::vector<Actor*>();
-		m_RenderQueue = std::vector<SpriteRenderer*>();
 		m_IsActive = isActive;
 	}
 
@@ -28,7 +26,6 @@ namespace engine
 			delete actor;
 
 		m_Actors.clear();
-		m_RenderQueue.clear();
 	}
 
 	void World::Tick()
@@ -91,13 +88,6 @@ namespace engine
 			component->Begin();
 	}
 
-	void World::SubscribeToRenderQueue(SpriteRenderer* spriteRenderer)
-	{
-		assert(spriteRenderer != nullptr);
-		spriteRenderer->UpdateRenderer(m_EngineEntry->GetRenderer());
-		m_RenderQueue.push_back(spriteRenderer);
-	}
-
 	void World::ProcessEvents()
 	{
 		SDL_Event event;
@@ -127,9 +117,12 @@ namespace engine
 			SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 			SDL_RenderClear(renderer);
 
-			// Render actors here.
-			for (auto spriteRenderer : m_RenderQueue)
-				spriteRenderer->Render(renderer);
+			for (auto actor : m_Actors)
+			{
+				SpriteRenderer* spriteRenderer = actor->GetComponent<SpriteRenderer>();
+				if (spriteRenderer != nullptr)
+					spriteRenderer->Render(renderer);
+			}
 
 			SDL_RenderPresent(renderer);
 		}
