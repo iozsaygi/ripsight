@@ -2,6 +2,7 @@
 #define PLAYER_CONTROLLER_H
 
 #include "engine.h"
+#include "game/components/entities/weapons/weapon_controller.h"
 
 class PlayerController : public engine::Component
 {
@@ -16,6 +17,7 @@ private:
 	engine::Vector2D m_Velocity;
 	engine::Transform* m_OwnerTransform = nullptr;
 	engine::SpriteRenderer* m_OwnerSpriteRenderer = nullptr;
+	WeaponController* m_WeaponController = nullptr;
 };
 
 #endif // !PLAYER_CONTROLLER_H

@@ -7,6 +7,7 @@ void PlayerController::Birth()
 	assert(GetOwner() != nullptr);
 	m_OwnerTransform = GetOwner()->GetComponent<engine::Transform>();
 	m_OwnerSpriteRenderer = GetOwner()->GetComponent<engine::SpriteRenderer>();
+	m_WeaponController = GetOwner()->GetComponent<WeaponController>();
 }
 
 void PlayerController::OnTick(float deltaTime)
@@ -18,32 +19,17 @@ void PlayerController::OnTick(float deltaTime)
 	m_OwnerSpriteRenderer->UpdateRenderAngle(degreeInAngle + 180.0);
 
 	if (engine::Input::WKeyCode.GetIsKeyDown())
-	{
 		m_OwnerTransform->GetPosition().Subtract(engine::Vector2D(0.0f, m_Velocity.GetY() + deltaTime));
-	}
 
 	if (engine::Input::AKeyCode.GetIsKeyDown())
-	{
 		m_OwnerTransform->GetPosition().Subtract(engine::Vector2D(m_Velocity.GetX() + deltaTime, 0.0f));
-	}
 
 	if (engine::Input::SKeyCode.GetIsKeyDown())
-	{
 		m_OwnerTransform->GetPosition().Add(engine::Vector2D(0.0f, m_Velocity.GetY() + deltaTime));
-	}
 
 	if (engine::Input::DKeyCode.GetIsKeyDown())
-	{
 		m_OwnerTransform->GetPosition().Add(engine::Vector2D(m_Velocity.GetX() + deltaTime, 0.0f));
-	}
 
 	if (engine::Input::MouseState.GetIsLeftMouseButtonDown())
-	{
-		SDL_Log("Left mouse button triggered!");
-	}
-
-	if (engine::Input::MouseState.GetIsRightMouseButtonDown())
-	{
-		SDL_Log("Right mouse button triggered!");
-	}
+		m_WeaponController->Fire();
 }

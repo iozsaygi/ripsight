@@ -1,5 +1,7 @@
 #include "engine.h"
 #include "game/components/entities/player/player_controller.h"
+#include "game/components/entities/weapons/weapon_info.h"
+#include "game/components/entities/weapons/weapon_controller.h"
 
 int main(int argc, char* argv[])
 {
@@ -24,6 +26,8 @@ int main(int argc, char* argv[])
 	engine::SpriteRenderer* spriteRenderer = new engine::SpriteRenderer(player, engineEntry, "assets/imgs/entities/player/player.png");
 	PlayerController* playerController = new PlayerController(player, engine::Vector2D(3.0f, 3.0f));
 	player->AddComponent(playerController);
+	WeaponController* weaponController = new WeaponController(player, WeaponInfo::GetPistolInfo());
+	player->AddComponent(weaponController);
 
 	player->AddComponent(spriteRenderer);
 	world->AddActor(player);

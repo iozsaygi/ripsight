@@ -96,7 +96,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)engine\src;$(SolutionDir)dependencies\SDL2\include;$(SolutionDir)dependencies\SDL2_image\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)engine\src;$(SolutionDir)dependencies\SDL2\include;$(SolutionDir)dependencies\SDL2_image\include;$(SolutionDir)ripsight\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -113,7 +113,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)engine\src;$(SolutionDir)dependencies\SDL2\include;$(SolutionDir)dependencies\SDL2_image\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)engine\src;$(SolutionDir)dependencies\SDL2\include;$(SolutionDir)dependencies\SDL2_image\include;$(SolutionDir)ripsight\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,7 +130,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)engine\src;$(SolutionDir)dependencies\SDL2\include;$(SolutionDir)dependencies\SDL2_image\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)engine\src;$(SolutionDir)dependencies\SDL2\include;$(SolutionDir)dependencies\SDL2_image\include;$(SolutionDir)ripsight\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -147,7 +147,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)engine\src;$(SolutionDir)dependencies\SDL2\include;$(SolutionDir)dependencies\SDL2_image\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)engine\src;$(SolutionDir)dependencies\SDL2\include;$(SolutionDir)dependencies\SDL2_image\include;$(SolutionDir)ripsight\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -160,6 +160,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\game\components\entities\player\player_controller.cpp" />
+    <ClCompile Include="src\game\components\entities\weapons\weapon_controller.cpp" />
+    <ClCompile Include="src\game\components\entities\weapons\weapon_info.cpp" />
     <ClCompile Include="src\ripsight.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +171,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\game\components\entities\player\player_controller.h" />
+    <ClInclude Include="src\game\components\entities\weapons\weapon_controller.h" />
+    <ClInclude Include="src\game\components\entities\weapons\weapon_info.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
