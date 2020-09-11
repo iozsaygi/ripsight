@@ -7,8 +7,17 @@
 class PlayerController : public engine::Component
 {
 public:
-	PlayerController(engine::Actor* owner) : Component(owner) { m_Velocity = engine::Vector2D::One(); }
-	PlayerController(engine::Actor* owner, const engine::Vector2D& velocity) : Component(owner) { m_Velocity = velocity; }
+	PlayerController(engine::Actor* owner, engine::EngineEntry* engineEntry) : Component(owner) 
+	{ 
+		m_Velocity = engine::Vector2D::One();
+		m_EngineEntry = engineEntry;
+	}
+
+	PlayerController(engine::Actor* owner, engine::EngineEntry* engineEntry, const engine::Vector2D& velocity) : Component(owner)
+	{
+		m_Velocity = velocity; 
+		m_EngineEntry = engineEntry;
+	}
 
 	void Birth() override;
 	void OnTick(float deltaTime) override;
@@ -18,6 +27,7 @@ private:
 	engine::Transform* m_OwnerTransform = nullptr;
 	engine::SpriteRenderer* m_OwnerSpriteRenderer = nullptr;
 	WeaponController* m_WeaponController = nullptr;
+	engine::EngineEntry* m_EngineEntry = nullptr;
 };
 
 #endif // !PLAYER_CONTROLLER_H

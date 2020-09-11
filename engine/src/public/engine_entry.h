@@ -15,10 +15,14 @@ namespace engine
 		~EngineEntry();
 
 		int GetTargetFPS();
+		int GetWindowWidth();
+		int GetWindowHeight();
 		SDL_Renderer* GetRenderer();
 
 	private:
 		int m_TargetFPS = 0;
+		int m_WindowWidth = 0;
+		int m_WindowHeight = 0;
 		SDL_Window* m_Window = nullptr;
 		SDL_Renderer* m_Renderer = nullptr;
 	};

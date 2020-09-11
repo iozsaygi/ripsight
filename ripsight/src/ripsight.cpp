@@ -24,7 +24,7 @@ int main(int argc, char* argv[])
 	engine::Transform* playerTransform = new engine::Transform(player, engine::Vector2D(300, 200), engine::Vector2D(48, 48));
 	player->AddComponent(playerTransform);
 	engine::SpriteRenderer* spriteRenderer = new engine::SpriteRenderer(player, engineEntry, "assets/imgs/entities/player/player.png");
-	PlayerController* playerController = new PlayerController(player, engine::Vector2D(3.0f, 3.0f));
+	PlayerController* playerController = new PlayerController(player, engineEntry, engine::Vector2D(3.0f, 3.0f));
 	player->AddComponent(playerController);
 	WeaponController* weaponController = new WeaponController(player, WeaponInfo::GetPistolInfo());
 	player->AddComponent(weaponController);

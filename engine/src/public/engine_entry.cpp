@@ -6,6 +6,8 @@ namespace engine
 	EngineEntry::EngineEntry(const std::string& title, const int windowWidth, const int windowHeight, 
 		const int targetFPS)
 	{
+		m_WindowWidth = windowWidth;
+		m_WindowHeight = windowHeight;
 		m_TargetFPS = targetFPS;
 
 		if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != 0)
@@ -44,6 +46,16 @@ namespace engine
 	int EngineEntry::GetTargetFPS()
 	{
 		return m_TargetFPS;
+	}
+
+	int EngineEntry::GetWindowWidth()
+	{
+		return m_WindowWidth;
+	}
+
+	int EngineEntry::GetWindowHeight()
+	{
+		return m_WindowHeight;
 	}
 
 	SDL_Renderer* EngineEntry::GetRenderer()

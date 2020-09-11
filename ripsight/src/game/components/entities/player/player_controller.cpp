@@ -1,6 +1,7 @@
 #include <assert.h>
 #include <math.h>
 #include "player_controller.h"
+#include <iostream> // remove later
 
 void PlayerController::Birth()
 {
@@ -19,16 +20,36 @@ void PlayerController::OnTick(float deltaTime)
 	m_OwnerSpriteRenderer->UpdateRenderAngle(degreeInAngle + 180.0);
 
 	if (engine::Input::WKeyCode.GetIsKeyDown())
-		m_OwnerTransform->GetPosition().Subtract(engine::Vector2D(0.0f, m_Velocity.GetY() + deltaTime));
+	{
+		auto transformPosition = m_OwnerTransform->GetPosition();
+		auto calculatedMovement = transformPosition.Subtract(engine::Vector2D(0.0f, m_Velocity.GetY() + deltaTime));
+		if (calculatedMovement.GetY() >= 0)
+			m_OwnerTransform->GetPosition().Subtract(engine::Vector2D(0.0f, m_Velocity.GetY() + deltaTime));
+	}
 
 	if (engine::Input::AKeyCode.GetIsKeyDown())
-		m_OwnerTransform->GetPosition().Subtract(engine::Vector2D(m_Velocity.GetX() + deltaTime, 0.0f));
+	{
+		auto transformPosition = m_OwnerTransform->GetPosition();
+		auto calculatedMovement = transformPosition.Subtract(engine::Vector2D(m_Velocity.GetX() + deltaTime, 0.0f));
+		if (calculatedMovement.GetX() >= 0)
+			m_OwnerTransform->GetPosition().Subtract(engine::Vector2D(m_Velocity.GetX() + deltaTime, 0.0f));
+	}
 
 	if (engine::Input::SKeyCode.GetIsKeyDown())
-		m_OwnerTransform->GetPosition().Add(engine::Vector2D(0.0f, m_Velocity.GetY() + deltaTime));
+	{
+		auto transformPosition = m_OwnerTransform->GetPosition();
+		auto calculatedMovement = transformPosition.Add(engine::Vector2D(0.0f, m_Velocity.GetY() + deltaTime));
+		if (calculatedMovement.GetY() + m_OwnerTransform->GetScale().GetY() <= m_EngineEntry->GetWindowHeight())
+			m_OwnerTransform->GetPosition().Add(engine::Vector2D(0.0f, m_Velocity.GetY() + deltaTime));
+	}
 
 	if (engine::Input::DKeyCode.GetIsKeyDown())
-		m_OwnerTransform->GetPosition().Add(engine::Vector2D(m_Velocity.GetX() + deltaTime, 0.0f));
+	{
+		auto transformPosition = m_OwnerTransform->GetPosition();
+		auto calculatedMovement = transformPosition.Add(engine::Vector2D(m_Velocity.GetX() + deltaTime, 0.0f));
+		if (calculatedMovement.GetX() + m_OwnerTransform->GetScale().GetX() <= m_EngineEntry->GetWindowWidth())
+			m_OwnerTransform->GetPosition().Add(engine::Vector2D(m_Velocity.GetX() + deltaTime, 0.0f));
+	}
 
 	if (engine::Input::MouseState.GetIsLeftMouseButtonDown())
 		m_WeaponController->Fire();
