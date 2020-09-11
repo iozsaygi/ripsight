@@ -4,10 +4,11 @@
 
 namespace engine
 {
-	Actor::Actor()
+	Actor::Actor(const std::string& name)
 	{
 		m_Components = std::vector<Component*>();
 		m_ComponentMap = std::map<const std::type_info*, Component*>();
+		m_Name = name;
 	}
 
 	Actor::~Actor()
@@ -29,5 +30,21 @@ namespace engine
 	std::vector<Component*> Actor::GetComponents()
 	{
 		return m_Components;
+	}
+
+	World* Actor::GetOwnerWorld()
+	{
+		return m_OwnerWorld;
+	}
+
+	void Actor::SetOwnerWorld(World* world)
+	{
+		assert(world != nullptr);
+		m_OwnerWorld = world;
+	}
+
+	std::string& Actor::GetName()
+	{
+		return m_Name;
 	}
 }

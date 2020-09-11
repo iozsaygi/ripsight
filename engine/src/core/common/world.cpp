@@ -72,12 +72,14 @@ namespace engine
 	{
 		assert(actor != nullptr);
 		m_Actors.push_back(actor);
+		actor->SetOwnerWorld(this);
 	}
 
 	void World::AddActorRuntime(Actor* actor)
 	{
 		assert(actor != nullptr);
 		m_Actors.push_back(actor);
+		actor->SetOwnerWorld(this);
 
 		// Trigger the components of given actor.
 		auto components = actor->GetComponents();
@@ -126,5 +128,19 @@ namespace engine
 
 			SDL_RenderPresent(renderer);
 		}
+	}
+
+	Actor* World::GetActorByName(const std::string& name)
+	{
+		for (auto actor : m_Actors)
+		{
+			if (actor != nullptr)
+			{
+				if (actor->GetName() == name)
+					return actor;
+			}
+		}
+
+		return nullptr;
 	}
 }

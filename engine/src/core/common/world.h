@@ -1,6 +1,7 @@
 #ifndef WORLD_H
 #define WORLD_H
 
+#include <string>
 #include <vector>
 #include "public/engine_entry.h"
 #include "core/blueprints/components/sprite_renderer.h"
@@ -24,6 +25,8 @@ namespace engine
 
 		// Adds given actor to the world. Only call while the game/engine is running.
 		void AddActorRuntime(Actor* actor);
+
+		Actor* GetActorByName(const std::string& name);
 
 	private:
 		bool m_IsActive = false;

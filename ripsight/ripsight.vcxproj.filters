@@ -18,24 +18,30 @@
     <ClCompile Include="src\ripsight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\components\entities\player\player_controller.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\game\components\entities\weapons\weapon_info.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\game\components\entities\weapons\weapon_controller.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\game\components\entities\player\player_controller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\components\ai\chase_controller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\game\components\entities\player\player_controller.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\game\components\entities\weapons\weapon_info.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\game\components\entities\weapons\weapon_controller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\components\entities\player\player_controller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\components\ai\chase_controller.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,6 +1,7 @@
 #ifndef ACTOR_H
 #define ACTOR_H
 
+#include <string>
 #include <vector>
 #include <typeinfo>
 #include <map>
@@ -8,11 +9,13 @@
 
 namespace engine
 {
+	class World;
+
 	// Actor is container of components.
 	class Actor
 	{
 	public:
-		Actor();
+		Actor(const std::string& name);
 		~Actor();
 
 		// Adds given component to the actor.
@@ -37,9 +40,15 @@ namespace engine
 			return static_cast<T*>(m_ComponentMap[&typeid(T)]);
 		}
 
+		World* GetOwnerWorld();
+		void SetOwnerWorld(World* world);
+		std::string& GetName();
+
 	private:
+		std::string m_Name;
 		std::vector<Component*> m_Components;
 		std::map<const std::type_info*, Component*> m_ComponentMap;
+		World* m_OwnerWorld = nullptr;
 	};
 }
 
