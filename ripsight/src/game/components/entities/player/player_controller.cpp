@@ -1,7 +1,6 @@
 #include <assert.h>
 #include <math.h>
 #include "player_controller.h"
-#include <iostream> // remove later
 
 void PlayerController::Birth()
 {

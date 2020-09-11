@@ -18,6 +18,16 @@ namespace engine
 		// Adds given component to the actor.
 		void AddComponent(Component* component);
 
+		template <typename T, typename... TArgs>
+		T& AddComponent(TArgs&&... args)
+		{
+			T* newComponent(new T(std::forward<TArgs>(args)...));
+			newComponent->SetOwner(this);
+			m_Components.push_back(newComponent);
+			m_ComponentMap[&typeid(*newComponent)] = newComponent;
+			return *newComponent;
+		}
+
 		// Returns the all components of actor.
 		std::vector<Component*> GetComponents();
 

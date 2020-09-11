@@ -9,7 +9,12 @@ namespace engine
 	class Component
 	{
 	public:
-		Component(Actor* owner) { m_Owner = owner; }
+		Component(Actor* owner) 
+		{
+			if (m_Owner == nullptr)
+				m_Owner = owner;;
+		}
+
 		virtual ~Component() {}
 
 		// Will be called before world starts ticking. (Only once)
@@ -25,6 +30,7 @@ namespace engine
 		inline virtual void OnShutdown() {}
 
 		inline Actor* GetOwner() { return m_Owner; }
+		inline void SetOwner(Actor* actor) { m_Owner = actor; }
 
 	private:
 		Actor* m_Owner = nullptr;
