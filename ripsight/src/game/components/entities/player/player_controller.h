@@ -21,7 +21,6 @@ public:
 
 	void Birth() override;
 	void OnTick(float deltaTime) override;
-	void OnCollision() override;
 
 private:
 	engine::Vector2D m_Velocity;

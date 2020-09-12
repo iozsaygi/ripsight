@@ -53,8 +53,3 @@ void PlayerController::OnTick(float deltaTime)
 	if (engine::Input::MouseState.GetIsLeftMouseButtonDown())
 		m_WeaponController->Fire();
 }
-
-void PlayerController::OnCollision()
-{
-	SDL_Log("Collision!");
-}

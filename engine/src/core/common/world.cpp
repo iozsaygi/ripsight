@@ -28,6 +28,7 @@ namespace engine
 			delete actor;
 
 		m_Actors.clear();
+		m_CollidersInWorld.clear();
 	}
 
 	void World::Tick()
@@ -116,10 +117,10 @@ namespace engine
 				if (SDL_HasIntersection(&m_CollidersInWorld[i]->GetColliderRectangle(), &m_CollidersInWorld[i + 1]->GetColliderRectangle()))
 				{
 					for (auto component : m_CollidersInWorld[i]->GetOwner()->GetComponents())
-						component->OnCollision();
+						component->OnCollision(m_CollidersInWorld[i + 1]->GetOwner());
 
 					for (auto component : m_CollidersInWorld[i + 1]->GetOwner()->GetComponents())
-						component->OnCollision();
+						component->OnCollision(m_CollidersInWorld[i]->GetOwner());
 				}
 			}
 		}
