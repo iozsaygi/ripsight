@@ -23,7 +23,7 @@ int main(int argc, char* argv[])
 	engine::Actor* zombie = new engine::Actor("Zombie");
 	zombie->AddComponent<engine::Transform>(zombie, engine::Vector2D(360, 100), engine::Vector2D(40, 40));
 	zombie->AddComponent<engine::SpriteRenderer>(zombie, engineEntry, "assets/imgs/entities/enemies/zombie.png");
-	zombie->AddComponent<ChaseController>(zombie);
+	zombie->AddComponent<ChaseController>(zombie, 0.5f);
 
 	world->AddActor(player);
 	world->AddActor(zombie);

@@ -17,4 +17,8 @@ void ChaseController::OnTick(float deltaTime)
 	auto degreeInRad = atan2(deltaY, deltaX);
 	auto degreeInAngle = (degreeInRad * 180.0000) / 3.1416;
 	m_SpriteRenderer->UpdateRenderAngle(degreeInAngle + 180.0f);
+
+	engine::Vector2D targetPosition = m_TargetTransform->GetPosition();
+	engine::Vector2D direction = targetPosition - m_OwnerTransform->GetPosition();
+	m_OwnerTransform->GetPosition() += engine::Vector2D(direction.GetX() * m_ChaseSpeed * deltaTime, direction.GetY() * m_ChaseSpeed * deltaTime);
 }
