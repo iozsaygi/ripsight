@@ -175,6 +175,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\core\blueprints\components\box_collider_2D.h" />
     <ClInclude Include="src\core\blueprints\components\sprite_renderer.h" />
     <ClInclude Include="src\core\blueprints\components\transform.h" />
     <ClInclude Include="src\core\common\actor.h" />
@@ -189,6 +190,7 @@
     <ClInclude Include="src\utils\img.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\core\blueprints\components\box_collider_2D.cpp" />
     <ClCompile Include="src\core\blueprints\components\sprite_renderer.cpp" />
     <ClCompile Include="src\core\blueprints\components\transform.cpp" />
     <ClCompile Include="src\core\common\actor.cpp" />

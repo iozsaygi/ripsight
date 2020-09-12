@@ -3,6 +3,7 @@
 #define ENGINE_H
 
 // blueprints
+#include "core/blueprints/components/box_collider_2D.h"
 #include "core/blueprints/components/sprite_renderer.h"
 #include "core/blueprints/components/transform.h"
 

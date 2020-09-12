@@ -75,21 +75,6 @@ namespace engine
 		actor->SetOwnerWorld(this);
 	}
 
-	void World::AddActorRuntime(Actor* actor)
-	{
-		assert(actor != nullptr);
-		m_Actors.push_back(actor);
-		actor->SetOwnerWorld(this);
-
-		// Trigger the components of given actor.
-		auto components = actor->GetComponents();
-		for (auto component : components)
-			component->Birth();
-
-		for (auto component : components)
-			component->Begin();
-	}
-
 	void World::ProcessEvents()
 	{
 		SDL_Event event;

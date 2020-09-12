@@ -16,6 +16,7 @@ int main(int argc, char* argv[])
 	engine::Actor* player = new engine::Actor("Player");
 	player->AddComponent<engine::Transform>(player, engine::Vector2D(300, 200), engine::Vector2D(48, 48));
 	player->AddComponent<engine::SpriteRenderer>(player, engineEntry, "assets/imgs/entities/player/player.png");
+	player->AddComponent<engine::BoxCollider2D>(player, engine::Vector2D(48, 48));
 	player->AddComponent<PlayerController>(player, engineEntry, engine::Vector2D(3.0f, 3.0f));
 	player->AddComponent<WeaponController>(player, WeaponInfo::GetPistolInfo());
 
@@ -23,6 +24,7 @@ int main(int argc, char* argv[])
 	engine::Actor* zombie = new engine::Actor("Zombie");
 	zombie->AddComponent<engine::Transform>(zombie, engine::Vector2D(360, 100), engine::Vector2D(40, 40));
 	zombie->AddComponent<engine::SpriteRenderer>(zombie, engineEntry, "assets/imgs/entities/enemies/zombie.png");
+	zombie->AddComponent<engine::BoxCollider2D>(zombie, engine::Vector2D(40, 40));
 	zombie->AddComponent<ChaseController>(zombie, 0.5f);
 
 	world->AddActor(player);

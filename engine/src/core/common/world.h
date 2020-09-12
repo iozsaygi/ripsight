@@ -23,9 +23,6 @@ namespace engine
 		// Adds given actor to world. 
 		void AddActor(Actor* actor);
 
-		// Adds given actor to the world. Only call while the game/engine is running.
-		void AddActorRuntime(Actor* actor);
-
 		Actor* GetActorByName(const std::string& name);
 
 	private:
