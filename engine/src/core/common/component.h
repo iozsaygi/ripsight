@@ -29,6 +29,9 @@ namespace engine
 		// Will be called when world gets disabled. (Only once)
 		inline virtual void OnShutdown() {}
 
+		// Gets called when collision happens for the owner of this component.
+		inline virtual void OnCollision() {}
+
 		inline Actor* GetOwner() { return m_Owner; }
 		inline void SetOwner(Actor* actor) { m_Owner = actor; }
 

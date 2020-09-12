@@ -14,4 +14,9 @@ namespace engine
 		m_ColliderRectangle.x = m_OwnerTransform->GetPosition().GetX();
 		m_ColliderRectangle.y = m_OwnerTransform->GetPosition().GetY();
 	}
+
+	SDL_Rect BoxCollider2D::GetColliderRectangle()
+	{
+		return m_ColliderRectangle;
+	}
 }

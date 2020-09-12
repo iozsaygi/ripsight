@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include "public/engine_entry.h"
+#include "core/blueprints/components/box_collider_2D.h"
 #include "core/blueprints/components/sprite_renderer.h"
 #include "core/common/actor.h"
 
@@ -29,9 +30,11 @@ namespace engine
 		bool m_IsActive = false;
 		EngineEntry* m_EngineEntry = nullptr;
 		std::vector<Actor*> m_Actors;
+		std::vector<BoxCollider2D*> m_CollidersInWorld;
 
 		void ProcessEvents();
 		void UpdateActors(float deltaTime);
+		void HandleCollisions();
 		void Render();
 	};
 }

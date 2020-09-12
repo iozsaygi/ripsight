@@ -10,6 +10,7 @@ namespace engine
 		assert(engineEntry != nullptr);
 		m_EngineEntry = engineEntry;
 		m_Actors = std::vector<Actor*>();
+		m_CollidersInWorld = std::vector<BoxCollider2D*>();
 	}
 
 	World::World(EngineEntry* engineEntry, bool isActive)
@@ -17,6 +18,7 @@ namespace engine
 		assert(engineEntry != nullptr);
 		m_EngineEntry = engineEntry;
 		m_Actors = std::vector<Actor*>();
+		m_CollidersInWorld = std::vector<BoxCollider2D*>();
 		m_IsActive = isActive;
 	}
 
@@ -30,6 +32,14 @@ namespace engine
 
 	void World::Tick()
 	{
+		// Initialize colliders.
+		for (auto actor : m_Actors)
+		{
+			BoxCollider2D* boxCollider2D = actor->GetComponent<BoxCollider2D>();
+			if (boxCollider2D != nullptr)
+				m_CollidersInWorld.push_back(boxCollider2D);
+		}
+
 		// That make a big mess...
 		for (auto actor : m_Actors)
 		{
@@ -54,6 +64,7 @@ namespace engine
 
 			ProcessEvents();
 			UpdateActors(deltaTime);
+			HandleCollisions();
 			Render();
 
 			frameTime = SDL_GetTicks() - frameStart;
@@ -93,6 +104,24 @@ namespace engine
 		{
 			for (auto component : actor->GetComponents())
 				component->OnTick(deltaTime);
+		}
+	}
+
+	void World::HandleCollisions()
+	{
+		for (int i = 0; i < m_CollidersInWorld.size(); i++)
+		{
+			if (i + 1 < m_CollidersInWorld.size())
+			{
+				if (SDL_HasIntersection(&m_CollidersInWorld[i]->GetColliderRectangle(), &m_CollidersInWorld[i + 1]->GetColliderRectangle()))
+				{
+					for (auto component : m_CollidersInWorld[i]->GetOwner()->GetComponents())
+						component->OnCollision();
+
+					for (auto component : m_CollidersInWorld[i + 1]->GetOwner()->GetComponents())
+						component->OnCollision();
+				}
+			}
 		}
 	}
 
