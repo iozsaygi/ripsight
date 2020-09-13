@@ -159,8 +159,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\game\aces_high\blueprint_manager.cpp" />
     <ClCompile Include="src\game\components\ai\chase_controller.cpp" />
     <ClCompile Include="src\game\components\entities\player\player_controller.cpp" />
+    <ClCompile Include="src\game\components\entities\spawners\enemy_spawner.cpp" />
     <ClCompile Include="src\game\components\entities\weapons\weapon_controller.cpp" />
     <ClCompile Include="src\game\components\entities\weapons\weapon_info.cpp" />
     <ClCompile Include="src\ripsight.cpp" />
@@ -171,8 +173,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\game\aces_high\blueprint_manager.h" />
     <ClInclude Include="src\game\components\ai\chase_controller.h" />
     <ClInclude Include="src\game\components\entities\player\player_controller.h" />
+    <ClInclude Include="src\game\components\entities\spawners\enemy_spawner.h" />
     <ClInclude Include="src\game\components\entities\weapons\weapon_controller.h" />
     <ClInclude Include="src\game\components\entities\weapons\weapon_info.h" />
   </ItemGroup>
