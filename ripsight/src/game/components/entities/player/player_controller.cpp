@@ -53,3 +53,9 @@ void PlayerController::OnTick(float deltaTime)
 	if (engine::Input::MouseState.GetIsLeftMouseButtonDown())
 		m_WeaponController->Fire();
 }
+
+void PlayerController::OnCollision(engine::Actor* other)
+{
+	// I am dead.
+	GetOwner()->GetIsActive() = false;
+}

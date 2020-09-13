@@ -24,6 +24,9 @@ namespace engine
 		// Adds given actor to world. 
 		void AddActor(Actor* actor);
 
+		// Adds given actor to the world. Use this only at runtime.
+		void AddActorRuntime(Actor* actor);
+
 		Actor* GetActorByName(const std::string& name);
 
 	private:

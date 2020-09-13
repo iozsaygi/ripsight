@@ -2,6 +2,7 @@
 #include "game/components/entities/player/player_controller.h"
 #include "game/components/entities/weapons/weapon_controller.h"
 #include "game/components/ai/chase_controller.h"
+#include "game/components/entities/spawners/enemy_spawner.h"
 #include "blueprint_manager.h"
 
 void BlueprintManager::CraftPlayer(engine::EngineEntry* engineEntry, engine::Actor* player)
@@ -21,4 +22,10 @@ void BlueprintManager::CraftZombie(engine::EngineEntry* engineEntry, engine::Act
 	zombie->AddComponent<engine::SpriteRenderer>(zombie, engineEntry, "assets/imgs/entities/enemies/zombie.png");
 	zombie->AddComponent<engine::BoxCollider2D>(zombie, engine::Vector2D(40, 40));
 	zombie->AddComponent<ChaseController>(zombie, 0.5f);
+}
+
+void BlueprintManager::CraftEnemySpawner(engine::EngineEntry* engineEntry, engine::Actor* enemySpawner)
+{
+	assert(enemySpawner != nullptr);
+	enemySpawner->AddComponent<EnemySpawner>(enemySpawner, engineEntry, 3.0f);
 }

@@ -9,6 +9,7 @@ namespace engine
 		m_Components = std::vector<Component*>();
 		m_ComponentMap = std::map<const std::type_info*, Component*>();
 		m_Name = name;
+		m_IsActive = true;
 	}
 
 	Actor::~Actor()
@@ -46,5 +47,10 @@ namespace engine
 	std::string& Actor::GetName()
 	{
 		return m_Name;
+	}
+
+	bool& Actor::GetIsActive()
+	{
+		return m_IsActive;
 	}
 }

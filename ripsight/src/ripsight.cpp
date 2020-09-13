@@ -11,11 +11,11 @@ int main(int argc, char* argv[])
 	engine::Actor* player = new engine::Actor("Player");
 	BlueprintManager::CraftPlayer(engineEntry, player);
 
-	engine::Actor* zombie = new engine::Actor("Zombie");
-	BlueprintManager::CraftZombie(engineEntry, zombie);
+	engine::Actor* enemySpawner = new engine::Actor("Enemy spawner");
+	BlueprintManager::CraftEnemySpawner(engineEntry, enemySpawner);
 
 	world->AddActor(player);
-	world->AddActor(zombie);
+	world->AddActor(enemySpawner);
 
 	world->Tick();
 

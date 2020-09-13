@@ -43,9 +43,11 @@ namespace engine
 		World* GetOwnerWorld();
 		void SetOwnerWorld(World* world);
 		std::string& GetName();
+		bool& GetIsActive();
 
 	private:
 		std::string m_Name;
+		bool m_IsActive = true;
 		std::vector<Component*> m_Components;
 		std::map<const std::type_info*, Component*> m_ComponentMap;
 		World* m_OwnerWorld = nullptr;
