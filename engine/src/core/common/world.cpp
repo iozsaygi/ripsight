@@ -131,11 +131,12 @@ namespace engine
 
 	void World::UpdateActors(float deltaTime)
 	{
-		for (auto actor : m_Actors)
+		int numberObActorsThisFrame = m_Actors.size();
+		for (int i = 0; i < numberObActorsThisFrame; i++)
 		{
-			if (actor->GetIsActive())
+			if (m_Actors[i]->GetIsActive())
 			{
-				for (auto component : actor->GetComponents())
+				for (auto component : m_Actors[i]->GetComponents())
 					component->OnTick(deltaTime);
 			}
 		}

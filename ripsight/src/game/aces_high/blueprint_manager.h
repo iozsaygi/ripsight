@@ -7,7 +7,7 @@ class BlueprintManager
 {
 public:
 	static void CraftPlayer(engine::EngineEntry* engineEntry, engine::Actor* player);
-	static void CraftZombie(engine::EngineEntry* engineEntry, engine::Actor* zombie);
+	static void CraftZombie(engine::EngineEntry* engineEntry, engine::Actor* zombie, engine::Vector2D initialPosition);
 	static void CraftEnemySpawner(engine::EngineEntry* engineEntry, engine::Actor* enemySpawner);
 };
 
