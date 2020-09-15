@@ -29,16 +29,21 @@ namespace engine
 
 		Actor* GetActorByName(const std::string& name);
 
+		// Marks the actor to be destroyed. Marked actor will be destroyed at the end of frame.
+		void ScheduleActorForDestroy(Actor* actor);
+
 	private:
 		bool m_IsActive = false;
 		EngineEntry* m_EngineEntry = nullptr;
 		std::vector<Actor*> m_Actors;
+		std::vector<Actor*> m_ActorsToDestroy;
 		std::vector<BoxCollider2D*> m_CollidersInWorld;
 
 		void ProcessEvents();
 		void UpdateActors(float deltaTime);
 		void HandleCollisions();
 		void Render();
+		void DestroyMarkedActors();
 	};
 }
 

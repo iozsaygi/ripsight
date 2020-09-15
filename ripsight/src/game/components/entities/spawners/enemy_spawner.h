@@ -23,11 +23,13 @@ public:
 		m_MaxSpawnCount = maxSpawnCount;
 	}
 
+	void Birth() override;
 	void OnTick(float deltaTime) override;
 	void Spawn();
 
 private:
 	engine::EngineEntry* m_EngineEntry = nullptr;
+	engine::Actor* m_PlayerReference = nullptr;
 	float m_SpawnRate;
 	float m_SpawnTimer = 0.0f;
 	int m_MinSpawnCount = 0;

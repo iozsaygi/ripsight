@@ -2,6 +2,12 @@
 #include <ctime>
 #include "enemy_spawner.h"
 
+void EnemySpawner::Birth()
+{
+	assert(GetOwner() != nullptr);
+	m_PlayerReference = GetOwner()->GetOwnerWorld()->GetActorByName("Player");
+}
+
 void EnemySpawner::OnTick(float deltaTime)
 {
 	m_SpawnTimer += deltaTime;
@@ -15,10 +21,10 @@ void EnemySpawner::OnTick(float deltaTime)
 void EnemySpawner::Spawn()
 {
 	assert(m_MinSpawnCount < m_MaxSpawnCount);
-	// TODO:
-	// 1) Pick a random side to spawn new zombie(s). (Top, Right, Bottom or Left)
-	// 2) Roll a random number and generate the zombie(s).
-	// 3) Give the required position values to zombie(s).
+
+	// Do not even spawn new enemy if player is unknown or inactive.
+	if (m_PlayerReference == nullptr || !m_PlayerReference->GetIsActive())
+		return;
 
 	// Which side of the map we want to generate zombies in?
 	int maxSide = 4;

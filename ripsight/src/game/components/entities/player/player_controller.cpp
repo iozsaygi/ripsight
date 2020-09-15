@@ -56,6 +56,5 @@ void PlayerController::OnTick(float deltaTime)
 
 void PlayerController::OnCollision(engine::Actor* other)
 {
-	// I am dead.
 	GetOwner()->GetIsActive() = false;
 }

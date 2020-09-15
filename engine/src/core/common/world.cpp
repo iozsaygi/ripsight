@@ -10,6 +10,7 @@ namespace engine
 		assert(engineEntry != nullptr);
 		m_EngineEntry = engineEntry;
 		m_Actors = std::vector<Actor*>();
+		m_ActorsToDestroy = std::vector<Actor*>();
 		m_CollidersInWorld = std::vector<BoxCollider2D*>();
 	}
 
@@ -18,6 +19,7 @@ namespace engine
 		assert(engineEntry != nullptr);
 		m_EngineEntry = engineEntry;
 		m_Actors = std::vector<Actor*>();
+		m_ActorsToDestroy = std::vector<Actor*>();
 		m_CollidersInWorld = std::vector<BoxCollider2D*>();
 		m_IsActive = isActive;
 	}
@@ -76,6 +78,7 @@ namespace engine
 			UpdateActors(deltaTime);
 			HandleCollisions();
 			Render();
+			DestroyMarkedActors();
 
 			frameTime = SDL_GetTicks() - frameStart;
 			if (frameDelay > frameTime)
@@ -185,6 +188,30 @@ namespace engine
 		}
 	}
 
+	void World::DestroyMarkedActors()
+	{
+		for (auto actor : m_ActorsToDestroy)
+		{
+			// Remove the actor from our "m_Actors" vector.
+			auto actorRemoveIt = std::find(m_Actors.begin(), m_Actors.end(), actor);
+			if (actorRemoveIt != m_Actors.end())
+				m_Actors.erase(actorRemoveIt);
+
+			// If actor has collider component, also remove it from our collider map.
+			BoxCollider2D* boxCollider2D = actor->GetComponent<BoxCollider2D>();
+			if (boxCollider2D != nullptr)
+			{
+				auto colliderRemoveIt = std::find(m_CollidersInWorld.begin(), m_CollidersInWorld.end(), boxCollider2D);
+				if (colliderRemoveIt != m_CollidersInWorld.end())
+					m_CollidersInWorld.erase(colliderRemoveIt);
+			}
+
+			delete actor;
+		}
+
+		m_ActorsToDestroy.clear();
+	}
+
 	Actor* World::GetActorByName(const std::string& name)
 	{
 		for (auto actor : m_Actors)
@@ -197,5 +224,11 @@ namespace engine
 		}
 
 		return nullptr;
+	}
+
+	void World::ScheduleActorForDestroy(Actor* actor)
+	{
+		assert(actor != nullptr);
+		m_ActorsToDestroy.push_back(actor);
 	}
 }
