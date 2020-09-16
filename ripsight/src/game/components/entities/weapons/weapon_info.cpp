@@ -22,7 +22,17 @@ float WeaponInfo::GetFireRate()
 	return m_FireRate;
 }
 
-WeaponInfo& WeaponInfo::GetPistolInfo()
+void WeaponInfo::SetDamage(int damage)
+{
+	m_Damage = damage;
+}
+
+void WeaponInfo::SetFireRate(float fireRate)
+{
+	m_FireRate = fireRate;
+}
+
+WeaponInfo WeaponInfo::GetPistolInfo()
 {
 	WeaponInfo weaponInfo(1, 3.0f);
 	return weaponInfo;

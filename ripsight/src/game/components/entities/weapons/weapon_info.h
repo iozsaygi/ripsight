@@ -9,8 +9,10 @@ public:
 
 	int GetDamage();
 	float GetFireRate();
+	void SetDamage(int damage);
+	void SetFireRate(float fireRate);
 
-	static WeaponInfo& GetPistolInfo();
+	static WeaponInfo GetPistolInfo();
 
 private:
 	int m_Damage;

@@ -9,7 +9,8 @@ class WeaponController : public engine::Component
 public:
 	WeaponController(engine::Actor* owner, const WeaponInfo& weaponInfo) : Component(owner)
 	{
-		m_WeaponInfo = weaponInfo;
+		m_WeaponInfo.SetDamage(weaponInfo.GetPistolInfo().GetDamage());
+		m_WeaponInfo.SetFireRate(weaponInfo.GetPistolInfo().GetFireRate());
 	}
 
 	void OnTick(float deltaTime) override;
