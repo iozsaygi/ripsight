@@ -25,7 +25,8 @@ void ChaseController::OnTick(float deltaTime)
 
 			engine::Vector2D targetPosition = m_TargetTransform->GetPosition();
 			engine::Vector2D direction = targetPosition - m_OwnerTransform->GetPosition();
-			m_OwnerTransform->GetPosition() += engine::Vector2D(direction.GetX() * m_ChaseSpeed * deltaTime, direction.GetY() * m_ChaseSpeed * deltaTime);
+			engine::Vector2D normalizedDirection = direction.GetNormalized();
+			m_OwnerTransform->GetPosition() += engine::Vector2D(normalizedDirection.GetX() * m_ChaseSpeed * deltaTime, normalizedDirection.GetY() * m_ChaseSpeed * deltaTime);
 		}
 	}
 }

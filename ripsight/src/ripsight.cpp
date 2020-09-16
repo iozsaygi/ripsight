@@ -14,8 +14,8 @@ int main(int argc, char* argv[])
 	engine::Actor* enemySpawner = new engine::Actor("Enemy spawner");
 	BlueprintManager::CraftEnemySpawner(engineEntry, enemySpawner);
 
-	world->AddActor(player);
-	world->AddActor(enemySpawner);
+	world->AddActor( player );
+	world->AddActor( enemySpawner );
 
 	world->Tick();
 

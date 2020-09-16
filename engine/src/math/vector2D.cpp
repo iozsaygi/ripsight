@@ -1,3 +1,4 @@
+#include <math.h>
 #include "vector2D.h"
 
 namespace engine
@@ -38,6 +39,19 @@ namespace engine
 	float Vector2D::GetY()
 	{
 		return m_Y;
+	}
+
+	float Vector2D::GetLength()
+	{
+		return sqrtf((m_X * m_X) + (m_Y * m_Y));
+	}
+
+	Vector2D Vector2D::GetNormalized()
+	{
+		float length = GetLength();
+		float x = m_X / length;
+		float y = m_Y / length;
+		return Vector2D(x, y);
 	}
 
 	Vector2D& Vector2D::Add(const Vector2D& other)

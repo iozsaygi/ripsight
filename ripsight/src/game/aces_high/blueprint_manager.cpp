@@ -21,7 +21,7 @@ void BlueprintManager::CraftZombie(engine::EngineEntry* engineEntry, engine::Act
 	zombie->AddComponent<engine::Transform>(zombie, initialPosition, engine::Vector2D(40, 40));
 	zombie->AddComponent<engine::SpriteRenderer>(zombie, engineEntry, "assets/imgs/entities/enemies/zombie.png");
 	zombie->AddComponent<engine::BoxCollider2D>(zombie, engine::Vector2D(40, 40));
-	zombie->AddComponent<ChaseController>(zombie, 0.5f);
+	zombie->AddComponent<ChaseController>(zombie, 70.0f);
 }
 
 void BlueprintManager::CraftEnemySpawner(engine::EngineEntry* engineEntry, engine::Actor* enemySpawner)

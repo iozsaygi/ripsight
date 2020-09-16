@@ -15,6 +15,8 @@ namespace engine
 
 		float GetX();
 		float GetY();
+		float GetLength();
+		Vector2D GetNormalized();
 
 		Vector2D& Add(const Vector2D& other);
 		Vector2D& Subtract(const Vector2D& other);
