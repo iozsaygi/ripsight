@@ -7,6 +7,7 @@ int main(int argc, char* argv[])
 	engine::EngineEntry* engineEntry = new engine::EngineEntry("Ripsight", 800, 600, 60);
 
 	engine::World* world = new engine::World(engineEntry, true);
+	engine::WorldManager::SetActiveWorld(world);
 
 	engine::Actor* player = new engine::Actor("Player");
 	BlueprintManager::CraftPlayer(engineEntry, player);

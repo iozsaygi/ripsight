@@ -32,6 +32,8 @@ namespace engine
 		// Marks the actor to be destroyed. Marked actor will be destroyed at the end of frame.
 		void ScheduleActorForDestroy(Actor* actor);
 
+		std::vector<BoxCollider2D*> GetCollidersInWorld();
+
 	private:
 		bool m_IsActive = false;
 		EngineEntry* m_EngineEntry = nullptr;

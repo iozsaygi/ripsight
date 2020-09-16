@@ -4,12 +4,14 @@ WeaponInfo::WeaponInfo()
 {
 	m_Damage = 0;
 	m_FireRate = 0.0f;
+	m_Range = 0.0f;
 }
 
-WeaponInfo::WeaponInfo(int damage, float fireRate)
+WeaponInfo::WeaponInfo(int damage, float fireRate, float range)
 {
 	m_Damage = damage;
 	m_FireRate = fireRate;
+	m_Range = range;
 }
 
 int WeaponInfo::GetDamage()
@@ -22,6 +24,11 @@ float WeaponInfo::GetFireRate()
 	return m_FireRate;
 }
 
+float WeaponInfo::GetRange()
+{
+	return m_Range;
+}
+
 void WeaponInfo::SetDamage(int damage)
 {
 	m_Damage = damage;
@@ -32,8 +39,13 @@ void WeaponInfo::SetFireRate(float fireRate)
 	m_FireRate = fireRate;
 }
 
+void WeaponInfo::SetRange(float range)
+{
+	m_Range = range;
+}
+
 WeaponInfo WeaponInfo::GetPistolInfo()
 {
-	WeaponInfo weaponInfo(1, 3.0f);
+	WeaponInfo weaponInfo(1, 3.0f, 1000.0f);
 	return weaponInfo;
 }

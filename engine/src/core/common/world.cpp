@@ -231,4 +231,9 @@ namespace engine
 		assert(actor != nullptr);
 		m_ActorsToDestroy.push_back(actor);
 	}
+
+	std::vector<BoxCollider2D*> World::GetCollidersInWorld()
+	{
+		return m_CollidersInWorld;
+	}
 }

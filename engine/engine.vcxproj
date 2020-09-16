@@ -181,11 +181,14 @@
     <ClInclude Include="src\core\common\actor.h" />
     <ClInclude Include="src\core\common\component.h" />
     <ClInclude Include="src\core\common\world.h" />
+    <ClInclude Include="src\core\common\world_manager.h" />
     <ClInclude Include="src\core\event_system\input.h" />
     <ClInclude Include="src\core\event_system\keycode.h" />
     <ClInclude Include="src\core\event_system\mouse_state.h" />
     <ClInclude Include="src\engine.h" />
     <ClInclude Include="src\math\vector2D.h" />
+    <ClInclude Include="src\physics\ray.h" />
+    <ClInclude Include="src\physics\raycast2D.h" />
     <ClInclude Include="src\public\engine_entry.h" />
     <ClInclude Include="src\utils\img.h" />
   </ItemGroup>
@@ -195,10 +198,13 @@
     <ClCompile Include="src\core\blueprints\components\transform.cpp" />
     <ClCompile Include="src\core\common\actor.cpp" />
     <ClCompile Include="src\core\common\world.cpp" />
+    <ClCompile Include="src\core\common\world_manager.cpp" />
     <ClCompile Include="src\core\event_system\input.cpp" />
     <ClCompile Include="src\core\event_system\keycode.cpp" />
     <ClCompile Include="src\core\event_system\mouse_state.cpp" />
     <ClCompile Include="src\math\vector2D.cpp" />
+    <ClCompile Include="src\physics\ray.cpp" />
+    <ClCompile Include="src\physics\raycast2D.cpp" />
     <ClCompile Include="src\public\engine_entry.cpp" />
     <ClCompile Include="src\utils\img.cpp" />
   </ItemGroup>

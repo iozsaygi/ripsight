@@ -11,6 +11,7 @@ public:
 	{
 		m_WeaponInfo.SetDamage(weaponInfo.GetPistolInfo().GetDamage());
 		m_WeaponInfo.SetFireRate(weaponInfo.GetPistolInfo().GetFireRate());
+		m_WeaponInfo.SetRange(weaponInfo.GetPistolInfo().GetRange());
 	}
 
 	void OnTick(float deltaTime) override;
