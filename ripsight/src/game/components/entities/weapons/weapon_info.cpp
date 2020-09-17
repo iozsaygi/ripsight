@@ -46,6 +46,6 @@ void WeaponInfo::SetRange(float range)
 
 WeaponInfo WeaponInfo::GetPistolInfo()
 {
-	WeaponInfo weaponInfo(1, 3.0f, 1000.0f);
+	WeaponInfo weaponInfo(1, 0.5f, 100.0f);
 	return weaponInfo;
 }

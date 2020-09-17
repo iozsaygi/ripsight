@@ -1,3 +1,4 @@
+#include "game/components/ai/chase_controller.h"
 #include "weapon_controller.h"
 
 void WeaponController::OnTick(float deltaTime)
@@ -30,8 +31,9 @@ void WeaponController::Fire()
 
 			if (actor != nullptr)
 			{
-				actor->GetIsActive() = false;
-				SDL_Log("Killed a zombie!");
+				auto chaseController = actor->GetComponent<ChaseController>();
+				if (chaseController != nullptr)
+					chaseController->GetIsEnabled() = false;
 			}
 			else
 			{

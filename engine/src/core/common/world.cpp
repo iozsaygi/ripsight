@@ -41,7 +41,7 @@ namespace engine
 			if (actor->GetIsActive())
 			{
 				BoxCollider2D* boxCollider2D = actor->GetComponent<BoxCollider2D>();
-				if (boxCollider2D != nullptr)
+				if (boxCollider2D != nullptr && boxCollider2D->GetIsEnabled())
 					m_CollidersInWorld.push_back(boxCollider2D);
 			}
 		}
@@ -52,7 +52,10 @@ namespace engine
 			if (actor->GetIsActive())
 			{
 				for (auto component : actor->GetComponents())
-					component->Birth();
+				{
+					if (component->GetIsEnabled())
+						component->Birth();
+				}
 			}
 		}
 
@@ -61,7 +64,10 @@ namespace engine
 			if (actor->GetIsActive())
 			{
 				for (auto component : actor->GetComponents())
-					component->Begin();
+				{
+					if (component->GetIsEnabled())
+						component->Begin();
+				}
 			}
 		}
 
@@ -108,14 +114,20 @@ namespace engine
 		if (actor->GetIsActive())
 		{
 			for (auto component : actor->GetComponents())
-				component->Birth();
+			{
+				if (component->GetIsEnabled())
+					component->Birth();
+			}
 
 			for (auto component : actor->GetComponents())
-				component->Begin();
+			{
+				if (component->GetIsEnabled())
+					component->Begin();
+			}
 
 			// Add actor's collider to the collision map. (If actor has one)
 			BoxCollider2D* boxCollider2D = actor->GetComponent<BoxCollider2D>();
-			if (boxCollider2D != nullptr)
+			if (boxCollider2D != nullptr && boxCollider2D->GetIsEnabled())
 				m_CollidersInWorld.push_back(boxCollider2D);
 		}
 	}
@@ -140,7 +152,10 @@ namespace engine
 			if (m_Actors[i]->GetIsActive())
 			{
 				for (auto component : m_Actors[i]->GetComponents())
-					component->OnTick(deltaTime);
+				{
+					if (component->GetIsEnabled())
+						component->OnTick(deltaTime);
+				}
 			}
 		}
 	}
@@ -156,10 +171,16 @@ namespace engine
 					if (SDL_HasIntersection(&m_CollidersInWorld[i]->GetColliderRectangle(), &m_CollidersInWorld[i + 1]->GetColliderRectangle()))
 					{
 						for (auto component : m_CollidersInWorld[i]->GetOwner()->GetComponents())
-							component->OnCollision(m_CollidersInWorld[i + 1]->GetOwner());
+						{
+							if (component->GetIsEnabled())
+								component->OnCollision(m_CollidersInWorld[i + 1]->GetOwner());
+						}
 
 						for (auto component : m_CollidersInWorld[i + 1]->GetOwner()->GetComponents())
-							component->OnCollision(m_CollidersInWorld[i]->GetOwner());
+						{
+							if (component->GetIsEnabled())
+								component->OnCollision(m_CollidersInWorld[i]->GetOwner());
+						}
 					}
 				}
 			}
@@ -179,7 +200,7 @@ namespace engine
 				if (actor->GetIsActive())
 				{
 					SpriteRenderer* spriteRenderer = actor->GetComponent<SpriteRenderer>();
-					if (spriteRenderer != nullptr)
+					if (spriteRenderer != nullptr && spriteRenderer->GetIsEnabled())
 						spriteRenderer->Render(renderer);
 				}
 			}

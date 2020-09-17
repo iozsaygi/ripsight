@@ -34,9 +34,11 @@ namespace engine
 
 		inline Actor* GetOwner() { return m_Owner; }
 		inline void SetOwner(Actor* actor) { m_Owner = actor; }
+		inline bool& GetIsEnabled() { return m_IsEnabled; }
 
 	private:
 		Actor* m_Owner = nullptr;
+		bool m_IsEnabled = true;
 	};
 }
 
