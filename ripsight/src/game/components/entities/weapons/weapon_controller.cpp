@@ -26,7 +26,9 @@ void WeaponController::Fire()
 			auto direction = engine::Input::MouseState.GetMousePosition().Subtract(transform->GetPosition());
 
 			// Craft our ray.
-			engine::Ray ray(transform->GetPosition(), direction, m_WeaponInfo.GetRange());
+			auto position = transform->GetPosition();
+			auto center = position.Add(engine::Vector2D(transform->GetScale().GetX() / 2, transform->GetScale().GetY() / 2));
+			engine::Ray ray(center, direction, m_WeaponInfo.GetRange());
 
 			// Cast a ray using our fresh ray.
 			engine::Actor* actor = Raycast2D(ray);
