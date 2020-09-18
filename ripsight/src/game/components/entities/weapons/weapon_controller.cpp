@@ -1,3 +1,5 @@
+#include <iostream>
+#include "game/components/common/damageable.h"
 #include "game/components/ai/chase_controller.h"
 #include "weapon_controller.h"
 
@@ -31,13 +33,22 @@ void WeaponController::Fire()
 
 			if (actor != nullptr)
 			{
-				auto chaseController = actor->GetComponent<ChaseController>();
-				if (chaseController != nullptr)
-					chaseController->GetIsEnabled() = false;
+				auto damageable = actor->GetComponent<Damageable>();
+				if (damageable != nullptr)
+				{
+					if (!damageable->TakeDamage(m_WeaponInfo.GetDamage()))
+					{
+						std::cout << m_WeaponInfo.GetDamage() << " " << "damage dealt to zombie" << std::endl;
+					}
+					else
+					{
+						actor->GetOwnerWorld()->ScheduleActorForDestroy(actor);
+					}
+				}
 			}
 			else
 			{
-				SDL_Log("I didn't hit anything!");
+				std::cout << "Failed to fetch enemy data from raycast!" << std::endl;
 			}
 		}
 

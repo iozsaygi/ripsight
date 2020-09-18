@@ -1,5 +1,6 @@
 #include <assert.h>
 #include "utils/img.h"
+#include "core/blueprints/components/box_collider_2D.h" // remove later
 #include "sprite_renderer.h"
 
 namespace engine
@@ -33,6 +34,16 @@ namespace engine
 			renderRectangle.h = m_OwnerTransform->GetScale().GetY();
 
 			SDL_RenderCopyEx(renderer, m_InitialSprite, nullptr, &renderRectangle, m_RenderAngle, nullptr, SDL_FLIP_NONE);
+
+			// For debugging. (Render the collider bounds)
+			engine::BoxCollider2D* boxCollider2D = GetOwner()->GetComponent<engine::BoxCollider2D>();
+			SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+			SDL_Rect colliderRectangle;
+			colliderRectangle.x = m_OwnerTransform->GetPosition().GetX();
+			colliderRectangle.y = m_OwnerTransform->GetPosition().GetY();
+			colliderRectangle.w = boxCollider2D->GetColliderRectangle().w;
+			colliderRectangle.h = boxCollider2D->GetColliderRectangle().h;
+			SDL_RenderDrawRect(renderer, &colliderRectangle);
 		}
 	}
 }

@@ -18,7 +18,9 @@ namespace engine
 			{
 				for (auto boxCollider2D : world->GetCollidersInWorld())
 				{
-					if (boxCollider2D != nullptr && boxCollider2D->GetOwner()->GetName() != "Player")
+					// This is a simple hack? Add layer system later on.
+					if (boxCollider2D != nullptr && boxCollider2D->GetOwner()->GetName() != "Player" && 
+						boxCollider2D->GetIsEnabled())
 					{
 						if (SDL_PointInRect(&origin, &boxCollider2D->GetColliderRectangle()))
 							return boxCollider2D->GetOwner();

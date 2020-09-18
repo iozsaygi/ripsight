@@ -1,4 +1,5 @@
 #include <assert.h>
+#include "game/components/common/damageable.h"
 #include "game/components/entities/player/player_controller.h"
 #include "game/components/entities/weapons/weapon_controller.h"
 #include "game/components/ai/chase_controller.h"
@@ -21,6 +22,7 @@ void BlueprintManager::CraftZombie(engine::EngineEntry* engineEntry, engine::Act
 	zombie->AddComponent<engine::Transform>(zombie, initialPosition, engine::Vector2D(40, 40));
 	zombie->AddComponent<engine::SpriteRenderer>(zombie, engineEntry, "assets/imgs/entities/enemies/zombie.png");
 	zombie->AddComponent<engine::BoxCollider2D>(zombie, engine::Vector2D(40, 40));
+	zombie->AddComponent<Damageable>(zombie, 100, 0);
 	zombie->AddComponent<ChaseController>(zombie, 70.0f);
 }
 

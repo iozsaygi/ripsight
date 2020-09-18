@@ -36,6 +36,9 @@
     <ClCompile Include="src\game\aces_high\blueprint_manager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\game\components\common\damageable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\game\components\entities\weapons\weapon_info.h">
@@ -54,6 +57,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\game\aces_high\blueprint_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\components\common\damageable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

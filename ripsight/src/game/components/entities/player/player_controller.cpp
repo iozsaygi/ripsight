@@ -56,5 +56,5 @@ void PlayerController::OnTick(float deltaTime)
 
 void PlayerController::OnCollision(engine::Actor* other)
 {
-	// GetOwner()->GetIsActive() = false;
+	GetOwner()->GetIsActive() = false;
 }
