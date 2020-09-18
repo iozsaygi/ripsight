@@ -1,6 +1,5 @@
 #include "engine.h"
 #include "game/aces_high/blueprint_manager.h"
-#include "game/components/ai/chase_controller.h"
 
 int main(int argc, char* argv[])
 {

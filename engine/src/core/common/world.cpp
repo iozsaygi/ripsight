@@ -11,6 +11,7 @@ namespace engine
 		m_EngineEntry = engineEntry;
 		m_Actors = std::vector<Actor*>();
 		m_ActorsToDestroy = std::vector<Actor*>();
+		m_RenderersInWorld = std::vector<SpriteRenderer*>();
 		m_CollidersInWorld = std::vector<BoxCollider2D*>();
 	}
 
@@ -20,6 +21,7 @@ namespace engine
 		m_EngineEntry = engineEntry;
 		m_Actors = std::vector<Actor*>();
 		m_ActorsToDestroy = std::vector<Actor*>();
+		m_RenderersInWorld = std::vector<SpriteRenderer*>();
 		m_CollidersInWorld = std::vector<BoxCollider2D*>();
 		m_IsActive = isActive;
 	}
@@ -30,16 +32,20 @@ namespace engine
 			delete actor;
 
 		m_Actors.clear();
+		m_RenderersInWorld.clear();
 		m_CollidersInWorld.clear();
 	}
 
 	void World::Tick()
 	{
-		// Initialize colliders.
 		for (auto actor : m_Actors)
 		{
 			if (actor->GetIsActive())
 			{
+				SpriteRenderer* spriteRenderer = actor->GetComponent<SpriteRenderer>();
+				if (spriteRenderer != nullptr && spriteRenderer->GetIsEnabled())
+					m_RenderersInWorld.push_back(spriteRenderer);
+
 				BoxCollider2D* boxCollider2D = actor->GetComponent<BoxCollider2D>();
 				if (boxCollider2D != nullptr && boxCollider2D->GetIsEnabled())
 					m_CollidersInWorld.push_back(boxCollider2D);
@@ -94,7 +100,10 @@ namespace engine
 		for (auto actor : m_Actors)
 		{
 			for (auto component : actor->GetComponents())
-				component->OnShutdown();
+			{
+				if (component->GetIsEnabled())
+					component->OnShutdown();
+			}
 		}
 	}
 
@@ -124,6 +133,10 @@ namespace engine
 				if (component->GetIsEnabled())
 					component->Begin();
 			}
+
+			SpriteRenderer* spriteRenderer = actor->GetComponent<SpriteRenderer>();
+			if (spriteRenderer != nullptr && spriteRenderer->GetIsEnabled())
+				m_RenderersInWorld.push_back(spriteRenderer);
 
 			// Add actor's collider to the collision map. (If actor has one)
 			BoxCollider2D* boxCollider2D = actor->GetComponent<BoxCollider2D>();
@@ -195,14 +208,10 @@ namespace engine
 			SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 			SDL_RenderClear(renderer);
 
-			for (auto actor : m_Actors)
+			for (auto spriteRenderer : m_RenderersInWorld)
 			{
-				if (actor->GetIsActive())
-				{
-					SpriteRenderer* spriteRenderer = actor->GetComponent<SpriteRenderer>();
-					if (spriteRenderer != nullptr && spriteRenderer->GetIsEnabled())
-						spriteRenderer->Render(renderer);
-				}
+				if (spriteRenderer != nullptr && spriteRenderer->GetOwner()->GetIsActive() && spriteRenderer->GetIsEnabled())
+					spriteRenderer->Render(renderer);
 			}
 
 			SDL_RenderPresent(renderer);
@@ -217,6 +226,14 @@ namespace engine
 			auto actorRemoveIt = std::find(m_Actors.begin(), m_Actors.end(), actor);
 			if (actorRemoveIt != m_Actors.end())
 				m_Actors.erase(actorRemoveIt);
+
+			SpriteRenderer* spriteRenderer = actor->GetComponent<SpriteRenderer>();
+			if (spriteRenderer != nullptr)
+			{
+				auto rendererRemoveIt = std::find(m_RenderersInWorld.begin(), m_RenderersInWorld.end(), spriteRenderer);
+				if (rendererRemoveIt != m_RenderersInWorld.end())
+					m_RenderersInWorld.erase(rendererRemoveIt);
+			}
 
 			// If actor has collider component, also remove it from our collider map.
 			BoxCollider2D* boxCollider2D = actor->GetComponent<BoxCollider2D>();

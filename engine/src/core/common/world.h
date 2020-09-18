@@ -39,6 +39,7 @@ namespace engine
 		EngineEntry* m_EngineEntry = nullptr;
 		std::vector<Actor*> m_Actors;
 		std::vector<Actor*> m_ActorsToDestroy;
+		std::vector<SpriteRenderer*> m_RenderersInWorld;
 		std::vector<BoxCollider2D*> m_CollidersInWorld;
 
 		void ProcessEvents();
