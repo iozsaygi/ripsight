@@ -14,6 +14,7 @@ void BlueprintManager::CraftPlayer(engine::EngineEntry* engineEntry, engine::Act
 	player->AddComponent<engine::BoxCollider2D>(player, engine::Vector2D(48, 48));
 	player->AddComponent<PlayerController>(player, engineEntry, engine::Vector2D(3.0f, 3.0f));
 	player->AddComponent<WeaponController>(player, WeaponInfo::GetPistolInfo());
+	player->AddComponent<engine::AudioPlayer>(player, "assets/audio/wpn/pistol_fire.wav");
 }
 
 void BlueprintManager::CraftZombie(engine::EngineEntry* engineEntry, engine::Actor* zombie, engine::Vector2D initialPosition)
@@ -30,4 +31,10 @@ void BlueprintManager::CraftEnemySpawner(engine::EngineEntry* engineEntry, engin
 {
 	assert(enemySpawner != nullptr);
 	enemySpawner->AddComponent<EnemySpawner>(enemySpawner, engineEntry, 1, 5, 3.0f);
+}
+
+void BlueprintManager::CraftStaticAudioPlayer(engine::Actor* staticAudioPlayer)
+{
+	assert(staticAudioPlayer != nullptr);
+	staticAudioPlayer->AddComponent<engine::AudioPlayer>(staticAudioPlayer, "assets/audio/entities/zombie/death.wav");
 }

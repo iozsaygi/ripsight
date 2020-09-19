@@ -14,8 +14,12 @@ int main(int argc, char* argv[])
 	engine::Actor* enemySpawner = new engine::Actor("Enemy spawner");
 	BlueprintManager::CraftEnemySpawner(engineEntry, enemySpawner);
 
+	engine::Actor* staticAudioPlayer = new engine::Actor("Static Audio Player");
+	BlueprintManager::CraftStaticAudioPlayer(staticAudioPlayer);
+
 	world->AddActor( player );
 	world->AddActor( enemySpawner );
+	world->AddActor( staticAudioPlayer );
 
 	world->Tick();
 

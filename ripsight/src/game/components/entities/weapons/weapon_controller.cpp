@@ -3,6 +3,12 @@
 #include "game/components/ai/chase_controller.h"
 #include "weapon_controller.h"
 
+void WeaponController::Birth()
+{
+	// Yep, let's chase some pointers.
+	m_StaticAudioPlayer = GetOwner()->GetOwnerWorld()->GetActorByName("Static Audio Player")->GetComponent<engine::AudioPlayer>();
+}
+
 void WeaponController::OnTick(float deltaTime)
 {
 	m_FireTimer += deltaTime;
@@ -18,6 +24,10 @@ void WeaponController::Fire()
 	// If i am allowed to fire.
 	if (m_CanFire)
 	{
+		auto audioPlayer = GetOwner()->GetComponent<engine::AudioPlayer>();
+		if (audioPlayer != nullptr)
+			audioPlayer->PlayOneShot(30);
+
 		// Fetch the transform component from our owner. (Maybe cache later?)
 		auto transform = GetOwner()->GetComponent<engine::Transform>();
 		if (transform != nullptr)
@@ -44,6 +54,7 @@ void WeaponController::Fire()
 					}
 					else
 					{
+						m_StaticAudioPlayer->PlayOneShot(110);
 						actor->GetOwnerWorld()->ScheduleActorForDestroy(actor);
 					}
 				}

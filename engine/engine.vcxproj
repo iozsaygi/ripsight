@@ -175,6 +175,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\core\blueprints\components\audio_player.h" />
     <ClInclude Include="src\core\blueprints\components\box_collider_2D.h" />
     <ClInclude Include="src\core\blueprints\components\sprite_renderer.h" />
     <ClInclude Include="src\core\blueprints\components\transform.h" />
@@ -190,9 +191,11 @@
     <ClInclude Include="src\physics\ray.h" />
     <ClInclude Include="src\physics\raycast2D.h" />
     <ClInclude Include="src\public\engine_entry.h" />
+    <ClInclude Include="src\utils\audio.h" />
     <ClInclude Include="src\utils\img.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\core\blueprints\components\audio_player.cpp" />
     <ClCompile Include="src\core\blueprints\components\box_collider_2D.cpp" />
     <ClCompile Include="src\core\blueprints\components\sprite_renderer.cpp" />
     <ClCompile Include="src\core\blueprints\components\transform.cpp" />
@@ -206,6 +209,7 @@
     <ClCompile Include="src\physics\ray.cpp" />
     <ClCompile Include="src\physics\raycast2D.cpp" />
     <ClCompile Include="src\public\engine_entry.cpp" />
+    <ClCompile Include="src\utils\audio.cpp" />
     <ClCompile Include="src\utils\img.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
