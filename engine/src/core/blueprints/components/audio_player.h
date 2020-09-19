@@ -18,7 +18,7 @@ namespace engine
 		~AudioPlayer();
 
 		void Birth() override;
-		void PlayOneShot(int volume);
+		void PlayOneShot(int channelID, int volume);
 
 	private:
 		std::string m_Path;

@@ -14,12 +14,12 @@ namespace engine
 		m_WaveChunk = LoadWaveChunk(m_Path);
 	}
 
-	void AudioPlayer::PlayOneShot(int volume)
+	void AudioPlayer::PlayOneShot(int channelID, int volume)
 	{
 		if (m_WaveChunk != nullptr)
 		{
-			Mix_Volume(-1, volume);
-			Mix_PlayChannel(-1, m_WaveChunk, 0);
+			Mix_Volume(channelID, volume);
+			Mix_PlayChannel(channelID, m_WaveChunk, 0);
 		}
 	}
 }

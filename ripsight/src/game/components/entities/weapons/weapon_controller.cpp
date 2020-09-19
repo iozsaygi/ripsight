@@ -26,7 +26,7 @@ void WeaponController::Fire()
 	{
 		auto audioPlayer = GetOwner()->GetComponent<engine::AudioPlayer>();
 		if (audioPlayer != nullptr)
-			audioPlayer->PlayOneShot(30);
+			audioPlayer->PlayOneShot(0, 40);
 
 		// Fetch the transform component from our owner. (Maybe cache later?)
 		auto transform = GetOwner()->GetComponent<engine::Transform>();
@@ -54,7 +54,7 @@ void WeaponController::Fire()
 					}
 					else
 					{
-						m_StaticAudioPlayer->PlayOneShot(110);
+						m_StaticAudioPlayer->PlayOneShot(1, 120);
 						actor->GetOwnerWorld()->ScheduleActorForDestroy(actor);
 					}
 				}
