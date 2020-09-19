@@ -1,4 +1,5 @@
 #include <SDL_image.h>
+#include <SDL_mixer.h>
 #include "engine_entry.h"
 
 namespace engine
@@ -29,6 +30,12 @@ namespace engine
 			return;
 		}
 
+		if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096) == -1)
+		{
+			SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "SDL_mixer could not initialize! SDL_mixer Error: %s", SDL_GetError());
+			return;
+		}
+
 		SDL_SetWindowTitle(m_Window, title.c_str());
 		SDL_Log("Engine entry created!");
 	}
@@ -38,6 +45,7 @@ namespace engine
 		SDL_Log("Shutting down engine entry!");
 
 		IMG_Quit();
+		Mix_CloseAudio();
 		SDL_DestroyRenderer(m_Renderer);
 		SDL_DestroyWindow(m_Window);
 		SDL_Quit();
