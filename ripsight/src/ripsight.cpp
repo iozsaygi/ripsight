@@ -11,6 +11,9 @@ int main(int argc, char* argv[])
 	engine::Actor* player = new engine::Actor("Player");
 	BlueprintManager::CraftPlayer(engineEntry, player);
 
+	engine::Actor* reviveButton = new engine::Actor("Revive Button");
+	BlueprintManager::CraftButton(engineEntry, reviveButton);
+
 	engine::Actor* enemySpawner = new engine::Actor("Enemy spawner");
 	BlueprintManager::CraftEnemySpawner(engineEntry, enemySpawner);
 
@@ -20,6 +23,10 @@ int main(int argc, char* argv[])
 	world->AddActor( player );
 	world->AddActor( enemySpawner );
 	world->AddActor( staticAudioPlayer );
+	world->AddActor( reviveButton );
+
+	// Disable the revive button for now.
+	reviveButton->SetIsActive(false);
 
 	world->Tick();
 

@@ -4,6 +4,7 @@
 #include "game/components/entities/weapons/weapon_controller.h"
 #include "game/components/ai/chase_controller.h"
 #include "game/components/entities/spawners/enemy_spawner.h"
+#include "game/components/ui/button.h"
 #include "blueprint_manager.h"
 
 void BlueprintManager::CraftPlayer(engine::EngineEntry* engineEntry, engine::Actor* player)
@@ -37,4 +38,12 @@ void BlueprintManager::CraftStaticAudioPlayer(engine::Actor* staticAudioPlayer)
 {
 	assert(staticAudioPlayer != nullptr);
 	staticAudioPlayer->AddComponent<engine::AudioPlayer>(staticAudioPlayer, "assets/audio/entities/zombie/death.wav");
+}
+
+void BlueprintManager::CraftButton(engine::EngineEntry* engineEntry, engine::Actor* actor)
+{
+	assert(actor != nullptr);
+	actor->AddComponent<engine::Transform>(actor, engine::Vector2D(400, 300), engine::Vector2D(100, 100));
+	actor->AddComponent<engine::SpriteRenderer>(actor, engineEntry, "assets/imgs/entities/enemies/zombie.png");
+	actor->AddComponent<Button>(actor);
 }

@@ -29,6 +29,7 @@ private:
 	engine::SpriteRenderer* m_OwnerSpriteRenderer = nullptr;
 	WeaponController* m_WeaponController = nullptr;
 	engine::EngineEntry* m_EngineEntry = nullptr;
+	engine::Actor* m_ReviveButton = nullptr;
 };
 
 #endif // !PLAYER_CONTROLLER_H

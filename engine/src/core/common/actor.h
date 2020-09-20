@@ -44,6 +44,7 @@ namespace engine
 		void SetOwnerWorld(World* world);
 		std::string& GetName();
 		bool& GetIsActive();
+		void SetIsActive(bool isActive);
 
 	private:
 		std::string m_Name;

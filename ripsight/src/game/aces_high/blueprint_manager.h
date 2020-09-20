@@ -10,6 +10,7 @@ public:
 	static void CraftZombie(engine::EngineEntry* engineEntry, engine::Actor* zombie, engine::Vector2D initialPosition);
 	static void CraftEnemySpawner(engine::EngineEntry* engineEntry, engine::Actor* enemySpawner);
 	static void CraftStaticAudioPlayer(engine::Actor* staticAudioPlayer);
+	static void CraftButton(engine::EngineEntry* engineEntry, engine::Actor* actor);
 };
 
 #endif // !BLUEPRINT_MANAGER_H

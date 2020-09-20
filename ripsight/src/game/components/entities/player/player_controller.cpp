@@ -8,6 +8,7 @@ void PlayerController::Birth()
 	m_OwnerTransform = GetOwner()->GetComponent<engine::Transform>();
 	m_OwnerSpriteRenderer = GetOwner()->GetComponent<engine::SpriteRenderer>();
 	m_WeaponController = GetOwner()->GetComponent<WeaponController>();
+	m_ReviveButton = GetOwner()->GetOwnerWorld()->GetActorByName("Revive Button");
 }
 
 void PlayerController::OnTick(float deltaTime)
@@ -56,5 +57,6 @@ void PlayerController::OnTick(float deltaTime)
 
 void PlayerController::OnCollision(engine::Actor* other)
 {
+	// m_ReviveButton->SetIsActive(true);
 	GetOwner()->GetIsActive() = false;
 }

@@ -53,4 +53,9 @@ namespace engine
 	{
 		return m_IsActive;
 	}
+
+	void Actor::SetIsActive(bool isActive)
+	{
+		m_IsActive = isActive;
+	}
 }

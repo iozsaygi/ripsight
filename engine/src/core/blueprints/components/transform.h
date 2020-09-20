@@ -23,6 +23,7 @@ namespace engine
 
 		Vector2D& GetPosition();
 		Vector2D& GetScale();
+		bool IsPositionInsideMe(Vector2D& position);
 
 	private:
 		Vector2D m_Position;

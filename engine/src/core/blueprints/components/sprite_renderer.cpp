@@ -37,13 +37,16 @@ namespace engine
 
 			// For debugging. (Render the collider bounds)
 			engine::BoxCollider2D* boxCollider2D = GetOwner()->GetComponent<engine::BoxCollider2D>();
-			SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-			SDL_Rect colliderRectangle;
-			colliderRectangle.x = m_OwnerTransform->GetPosition().GetX();
-			colliderRectangle.y = m_OwnerTransform->GetPosition().GetY();
-			colliderRectangle.w = boxCollider2D->GetColliderRectangle().w;
-			colliderRectangle.h = boxCollider2D->GetColliderRectangle().h;
-			SDL_RenderDrawRect(renderer, &colliderRectangle);
+			if (boxCollider2D != nullptr)
+			{
+				SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+				SDL_Rect colliderRectangle;
+				colliderRectangle.x = m_OwnerTransform->GetPosition().GetX();
+				colliderRectangle.y = m_OwnerTransform->GetPosition().GetY();
+				colliderRectangle.w = boxCollider2D->GetColliderRectangle().w;
+				colliderRectangle.h = boxCollider2D->GetColliderRectangle().h;
+				SDL_RenderDrawRect(renderer, &colliderRectangle);
+			}
 		}
 	}
 }
