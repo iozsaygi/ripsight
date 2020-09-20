@@ -20,13 +20,10 @@ int main(int argc, char* argv[])
 	engine::Actor* staticAudioPlayer = new engine::Actor("Static Audio Player");
 	BlueprintManager::CraftStaticAudioPlayer(staticAudioPlayer);
 
+	world->AddActor( reviveButton );
 	world->AddActor( player );
 	world->AddActor( enemySpawner );
 	world->AddActor( staticAudioPlayer );
-	world->AddActor( reviveButton );
-
-	// Disable the revive button for now.
-	reviveButton->SetIsActive(false);
 
 	world->Tick();
 
