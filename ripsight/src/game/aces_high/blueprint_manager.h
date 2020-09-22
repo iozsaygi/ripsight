@@ -11,6 +11,7 @@ public:
 	static void CraftEnemySpawner(engine::EngineEntry* engineEntry, engine::Actor* enemySpawner);
 	static void CraftStaticAudioPlayer(engine::Actor* staticAudioPlayer);
 	static void CraftButton(engine::EngineEntry* engineEntry, engine::Actor* actor);
+	static void CraftPlayerDeathAudioPlayer(engine::Actor* actor);
 };
 
 #endif // !BLUEPRINT_MANAGER_H

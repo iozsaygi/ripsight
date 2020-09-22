@@ -3,7 +3,7 @@
 
 int main(int argc, char* argv[])
 {
-	engine::EngineEntry* engineEntry = new engine::EngineEntry("Ripsight", 800, 600, 60);
+	engine::EngineEntry* engineEntry = new engine::EngineEntry("Ripsight - Alpha v0.1", 800, 600, 60);
 
 	engine::World* world = new engine::World(engineEntry, true);
 	engine::WorldManager::SetActiveWorld(world);
@@ -20,10 +20,14 @@ int main(int argc, char* argv[])
 	engine::Actor* staticAudioPlayer = new engine::Actor("Static Audio Player");
 	BlueprintManager::CraftStaticAudioPlayer(staticAudioPlayer);
 
+	engine::Actor* playerDeathStaticAudioPlayer = new engine::Actor("Player Death Static Audio Player");
+	BlueprintManager::CraftPlayerDeathAudioPlayer(playerDeathStaticAudioPlayer);
+
 	world->AddActor( reviveButton );
 	world->AddActor( player );
 	world->AddActor( enemySpawner );
 	world->AddActor( staticAudioPlayer );
+	world->AddActor( playerDeathStaticAudioPlayer );
 
 	world->Tick();
 

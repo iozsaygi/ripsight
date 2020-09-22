@@ -1,4 +1,3 @@
-#include <iostream>
 #include "button.h"
 
 void Button::Birth()
@@ -8,11 +7,18 @@ void Button::Birth()
 
 void Button::OnTick(float deltaTime)
 {
-	if (engine::Input::MouseState.GetIsLeftMouseButtonDown())
+	if (engine::Input::MouseState.GetIsLeftMouseButtonDown() && !m_IsTriggered)
 	{
 		auto mousePosition = engine::Input::MouseState.GetMousePosition();
 
 		if (m_Transform->IsPositionInsideMe(mousePosition))
-			std::cout << "Clicked on me!" << std::endl;
+		{
+			// Add an event system instead of hard coding events like that.
+			PlayerController::Revive();
+			m_IsTriggered = true;
+		}
 	}
+
+	if (!engine::Input::MouseState.GetIsLeftMouseButtonDown() && m_IsTriggered)
+		m_IsTriggered = false;
 }

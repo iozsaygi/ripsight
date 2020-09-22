@@ -19,6 +19,8 @@ public:
 		m_EngineEntry = engineEntry;
 	}
 
+	static void Revive();
+
 	void Birth() override;
 	void OnTick(float deltaTime) override;
 	void OnCollision(engine::Actor* other);
