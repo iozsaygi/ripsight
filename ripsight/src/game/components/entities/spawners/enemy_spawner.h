@@ -27,6 +27,9 @@ public:
 	void OnTick(float deltaTime) override;
 	void Spawn();
 
+	float GetSpawnRate();
+	void SetSpawnRate(float spawnRate);
+
 private:
 	engine::EngineEntry* m_EngineEntry = nullptr;
 	engine::Actor* m_PlayerReference = nullptr;

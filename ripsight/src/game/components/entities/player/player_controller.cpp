@@ -1,8 +1,12 @@
 #include <assert.h>
 #include <math.h>
+#include <iostream>
 #include "game/components/ui/button.h"
 #include "game/components/ai/chase_controller.h"
+#include "game/components/entities/spawners/enemy_spawner.h"
 #include "player_controller.h"
+
+int PlayerController::s_Lives = 5;
 
 void PlayerController::Birth()
 {
@@ -11,8 +15,6 @@ void PlayerController::Birth()
 	m_OwnerSpriteRenderer = GetOwner()->GetComponent<engine::SpriteRenderer>();
 	m_WeaponController = GetOwner()->GetComponent<WeaponController>();
 	m_ReviveButton = GetOwner()->GetOwnerWorld()->GetActorByName("Revive Button");
-
-	// m_ReviveButton->GetComponent<Button>()->OnPlayerClickedButton.Subscribe(Revive);
 	m_ReviveButton->SetIsActive(false);
 }
 
@@ -72,25 +74,44 @@ void PlayerController::OnCollision(engine::Actor* other)
 
 void PlayerController::Revive()
 {
-	auto activeWorld = engine::WorldManager::GetActiveWorld();
-	if (activeWorld != nullptr)
+	if (s_Lives > 0)
 	{
-		auto player = activeWorld->GetActorByName("Player");
-		if (player != nullptr)
+		auto activeWorld = engine::WorldManager::GetActiveWorld();
+		if (activeWorld != nullptr)
 		{
-			// Clear all the alive zombies before activating player.
-			for (auto collider : activeWorld->GetCollidersInWorld())
+			auto player = activeWorld->GetActorByName("Player");
+			if (player != nullptr)
 			{
-				auto ai = collider->GetOwner()->GetComponent<ChaseController>();
-				if (ai != nullptr)
-					activeWorld->ScheduleActorForDestroy(ai->GetOwner());
-			}
+				// Clear all the alive zombies before activating player.
+				for (auto collider : activeWorld->GetCollidersInWorld())
+				{
+					auto ai = collider->GetOwner()->GetComponent<ChaseController>();
+					if (ai != nullptr)
+						activeWorld->ScheduleActorForDestroy(ai->GetOwner());
+				}
 
-			player->SetIsActive(true);
-			player->GetComponent<engine::Transform>()->GetPosition() = engine::Vector2D(400 - 24, 300 - 50);
-			auto reviveButton = activeWorld->GetActorByName("Revive Button");
-			if (reviveButton != nullptr)
-				reviveButton->SetIsActive(false);
+				player->SetIsActive(true);
+				player->GetComponent<engine::Transform>()->GetPosition() = engine::Vector2D(400 - 24, 300 - 50);
+				auto reviveButton = activeWorld->GetActorByName("Revive Button");
+				if (reviveButton != nullptr)
+					reviveButton->SetIsActive(false);
+
+				auto enemySpawnerActor = activeWorld->GetActorByName("Enemy Spawner");
+				auto enemySpawner = enemySpawnerActor->GetComponent<EnemySpawner>();
+				auto currentSpawnRate = enemySpawner->GetSpawnRate();
+				auto calculatedSpawnRate = currentSpawnRate - 0.5f;
+				enemySpawner->SetSpawnRate(calculatedSpawnRate);
+
+				s_Lives--;
+				if (s_Lives < 0)
+					s_Lives = 0;
+
+				std::cout << s_Lives + 1 << " lives left!" << std::endl;
+			}
 		}
+	}
+	else
+	{
+		std::cout << "Can not revive! No lives left!" << std::endl;
 	}
 }

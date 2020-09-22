@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
 	engine::Actor* reviveButton = new engine::Actor("Revive Button");
 	BlueprintManager::CraftButton(engineEntry, reviveButton);
 
-	engine::Actor* enemySpawner = new engine::Actor("Enemy spawner");
+	engine::Actor* enemySpawner = new engine::Actor("Enemy Spawner");
 	BlueprintManager::CraftEnemySpawner(engineEntry, enemySpawner);
 
 	engine::Actor* staticAudioPlayer = new engine::Actor("Static Audio Player");

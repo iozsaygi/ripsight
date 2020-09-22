@@ -1,5 +1,6 @@
 #include <assert.h>
 #include <ctime>
+#include <iostream>
 #include "enemy_spawner.h"
 
 void EnemySpawner::Birth()
@@ -85,5 +86,19 @@ void EnemySpawner::Spawn()
 		}
 	}
 		break;
+	}
+}
+
+float EnemySpawner::GetSpawnRate()
+{
+	return m_SpawnRate;
+}
+
+void EnemySpawner::SetSpawnRate(float spawnRate)
+{
+	if (spawnRate >= 0.5f)
+	{
+		m_SpawnRate = spawnRate;
+		std::cout << "Enemy spawn rate updated to: " << spawnRate << std::endl;
 	}
 }
