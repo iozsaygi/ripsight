@@ -8,6 +8,13 @@
 #include "game/components/ui/crosshair.h"
 #include "blueprint_manager.h"
 
+void BlueprintManager::CraftBackground(engine::EngineEntry* engineEntry, engine::Actor* actor)
+{
+	assert(actor != nullptr);
+	actor->AddComponent<engine::Transform>(actor, engine::Vector2D::Zero(), engine::Vector2D(800, 600));
+	actor->AddComponent<engine::SpriteRenderer>(actor, engineEntry, "assets/imgs/env/sand_bg.png");
+}
+
 void BlueprintManager::CraftPlayer(engine::EngineEntry* engineEntry, engine::Actor* player)
 {
 	assert(player != nullptr);

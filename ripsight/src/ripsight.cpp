@@ -8,6 +8,9 @@ int main(int argc, char* argv[])
 	engine::World* world = new engine::World(engineEntry, true);
 	engine::WorldManager::SetActiveWorld(world);
 
+	engine::Actor* background = new engine::Actor("Background");
+	BlueprintManager::CraftBackground(engineEntry, background);
+
 	engine::Actor* player = new engine::Actor("Player");
 	BlueprintManager::CraftPlayer(engineEntry, player);
 
@@ -26,6 +29,7 @@ int main(int argc, char* argv[])
 	engine::Actor* crosshair = new engine::Actor("Crosshair");
 	BlueprintManager::CraftCrosshair(engineEntry, crosshair);
 
+	world->AddActor( background );
 	world->AddActor( reviveButton );
 	world->AddActor( player );
 	world->AddActor( enemySpawner );
