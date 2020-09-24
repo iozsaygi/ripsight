@@ -6,6 +6,7 @@
 #include "game/components/entities/spawners/enemy_spawner.h"
 #include "game/components/ui/button.h"
 #include "game/components/ui/crosshair.h"
+#include "game/components/entities/player/player.h"
 #include "blueprint_manager.h"
 
 void BlueprintManager::CraftBackground(engine::EngineEntry* engineEntry, engine::Actor* actor)
@@ -21,6 +22,7 @@ void BlueprintManager::CraftPlayer(engine::EngineEntry* engineEntry, engine::Act
 	player->AddComponent<engine::Transform>(player, engine::Vector2D(400 - 24, 300 - 50), engine::Vector2D(48, 48));
 	player->AddComponent<engine::SpriteRenderer>(player, engineEntry, "assets/imgs/entities/player/player.png");
 	player->AddComponent<engine::BoxCollider2D>(player, engine::Vector2D(48, 48));
+	player->AddComponent<Player>(player);
 	player->AddComponent<PlayerController>(player, engineEntry, engine::Vector2D(3.0f, 3.0f));
 	player->AddComponent<WeaponController>(player, WeaponInfo::GetPistolInfo());
 	player->AddComponent<engine::AudioPlayer>(player, "assets/audio/wpn/pistol_fire.wav");

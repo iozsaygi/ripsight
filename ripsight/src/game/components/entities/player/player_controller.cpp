@@ -96,12 +96,6 @@ void PlayerController::Revive()
 				if (reviveButton != nullptr)
 					reviveButton->SetIsActive(false);
 
-				auto enemySpawnerActor = activeWorld->GetActorByName("Enemy Spawner");
-				auto enemySpawner = enemySpawnerActor->GetComponent<EnemySpawner>();
-				auto currentSpawnRate = enemySpawner->GetSpawnRate();
-				auto calculatedSpawnRate = currentSpawnRate - 0.5f;
-				enemySpawner->SetSpawnRate(calculatedSpawnRate);
-
 				s_Lives--;
 				if (s_Lives < 0)
 					s_Lives = 0;

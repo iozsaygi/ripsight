@@ -7,6 +7,8 @@ void WeaponController::Birth()
 {
 	// Yep, let's chase some pointers.
 	m_StaticAudioPlayer = GetOwner()->GetOwnerWorld()->GetActorByName("Static Audio Player")->GetComponent<engine::AudioPlayer>();
+	m_Player = GetOwner()->GetComponent<Player>();
+	m_EnemySpawner = GetOwner()->GetOwnerWorld()->GetActorByName("Enemy Spawner")->GetComponent<EnemySpawner>();
 }
 
 void WeaponController::OnTick(float deltaTime)
@@ -56,6 +58,12 @@ void WeaponController::Fire()
 					{
 						m_StaticAudioPlayer->PlayOneShot(1, 120);
 						actor->GetOwnerWorld()->ScheduleActorForDestroy(actor);
+						m_Player->AddScore(10);
+
+						// Update the enemy spawner.
+						int cScore = m_Player->GetScore();
+						if (cScore % 50 == 0)
+							m_EnemySpawner->SetSpawnRate(m_EnemySpawner->GetSpawnRate() - 0.5f);
 					}
 				}
 			}

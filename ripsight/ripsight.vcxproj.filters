@@ -45,6 +45,9 @@
     <ClCompile Include="src\game\components\ui\crosshair.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\game\components\entities\player\player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\game\components\entities\weapons\weapon_info.h">
@@ -72,6 +75,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\game\components\ui\crosshair.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\components\entities\player\player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

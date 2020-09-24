@@ -2,6 +2,8 @@
 #define WEAPON_CONTROLLER_H
 
 #include "engine.h"
+#include "game/components/entities/player/player.h"
+#include "game/components/entities/spawners/enemy_spawner.h"
 #include "weapon_info.h"
 
 class WeaponController : public engine::Component
@@ -23,6 +25,8 @@ private:
 	bool m_CanFire = true;
 	WeaponInfo m_WeaponInfo;
 	engine::AudioPlayer* m_StaticAudioPlayer = nullptr;
+	Player* m_Player = nullptr;
+	EnemySpawner* m_EnemySpawner = nullptr;
 };
 
 #endif // !WEAPON_CONTROLLER_H

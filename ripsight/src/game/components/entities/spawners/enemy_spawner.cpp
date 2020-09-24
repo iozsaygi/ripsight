@@ -96,7 +96,7 @@ float EnemySpawner::GetSpawnRate()
 
 void EnemySpawner::SetSpawnRate(float spawnRate)
 {
-	if (spawnRate >= 0.5f)
+	if (spawnRate >= 1.0f && spawnRate != m_SpawnRate)
 	{
 		m_SpawnRate = spawnRate;
 		std::cout << "Enemy spawn rate updated to: " << spawnRate << std::endl;

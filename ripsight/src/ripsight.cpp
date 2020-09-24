@@ -31,8 +31,8 @@ int main(int argc, char* argv[])
 
 	world->AddActor( background );
 	world->AddActor( reviveButton );
-	world->AddActor( player );
 	world->AddActor( enemySpawner );
+	world->AddActor( player );
 	world->AddActor( staticAudioPlayer );
 	world->AddActor( playerDeathStaticAudioPlayer );
 	world->AddActor( crosshair );
