@@ -37,6 +37,7 @@ namespace engine
 		}
 
 		SDL_SetWindowTitle(m_Window, title.c_str());
+		SDL_ShowCursor(SDL_DISABLE);
 		SDL_Log("Engine entry created!");
 	}
 

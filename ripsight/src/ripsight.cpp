@@ -23,11 +23,15 @@ int main(int argc, char* argv[])
 	engine::Actor* playerDeathStaticAudioPlayer = new engine::Actor("Player Death Static Audio Player");
 	BlueprintManager::CraftPlayerDeathAudioPlayer(playerDeathStaticAudioPlayer);
 
+	engine::Actor* crosshair = new engine::Actor("Crosshair");
+	BlueprintManager::CraftCrosshair(engineEntry, crosshair);
+
 	world->AddActor( reviveButton );
 	world->AddActor( player );
 	world->AddActor( enemySpawner );
 	world->AddActor( staticAudioPlayer );
 	world->AddActor( playerDeathStaticAudioPlayer );
+	world->AddActor( crosshair );
 
 	world->Tick();
 

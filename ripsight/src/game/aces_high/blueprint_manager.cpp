@@ -5,6 +5,7 @@
 #include "game/components/ai/chase_controller.h"
 #include "game/components/entities/spawners/enemy_spawner.h"
 #include "game/components/ui/button.h"
+#include "game/components/ui/crosshair.h"
 #include "blueprint_manager.h"
 
 void BlueprintManager::CraftPlayer(engine::EngineEntry* engineEntry, engine::Actor* player)
@@ -52,4 +53,12 @@ void BlueprintManager::CraftPlayerDeathAudioPlayer(engine::Actor* actor)
 {
 	assert(actor != nullptr);
 	actor->AddComponent<engine::AudioPlayer>(actor, "assets/audio/entities/player/death.wav");
+}
+
+void BlueprintManager::CraftCrosshair(engine::EngineEntry* engineEntry, engine::Actor* crosshair)
+{
+	assert(crosshair != nullptr);
+	crosshair->AddComponent<engine::Transform>(crosshair, engine::Vector2D(400, 300), engine::Vector2D(64, 64));
+	crosshair->AddComponent<engine::SpriteRenderer>(crosshair, engineEntry, "assets/imgs/ui/crosshair.png");
+	crosshair->AddComponent<Crosshair>(crosshair);
 }

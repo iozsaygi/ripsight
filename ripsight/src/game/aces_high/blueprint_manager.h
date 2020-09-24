@@ -12,6 +12,7 @@ public:
 	static void CraftStaticAudioPlayer(engine::Actor* staticAudioPlayer);
 	static void CraftButton(engine::EngineEntry* engineEntry, engine::Actor* actor);
 	static void CraftPlayerDeathAudioPlayer(engine::Actor* actor);
+	static void CraftCrosshair(engine::EngineEntry* engineEntry, engine::Actor* crosshair);
 };
 
 #endif // !BLUEPRINT_MANAGER_H
