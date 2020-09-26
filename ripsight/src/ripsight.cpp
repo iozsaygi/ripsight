@@ -29,13 +29,18 @@ int main(int argc, char* argv[])
 	engine::Actor* crosshair = new engine::Actor("Crosshair");
 	BlueprintManager::CraftCrosshair(engineEntry, crosshair);
 
-	world->AddActor( background );
-	world->AddActor( reviveButton );
-	world->AddActor( enemySpawner );
-	world->AddActor( player );
-	world->AddActor( staticAudioPlayer );
-	world->AddActor( playerDeathStaticAudioPlayer );
-	world->AddActor( crosshair );
+	engine::Actor* playerScoreText = new engine::Actor("Player Score Text");
+	BlueprintManager::CraftText(engineEntry, playerScoreText, engine::Vector2D(400, 5), engine::Vector2D(35, 35), 
+		"assets/fonts/FiraCode/FiraCode-Regular.ttf", "0", 100, engine::Color(0, 0, 0));
+
+	world->AddActor(background);
+	world->AddActor(reviveButton);
+	world->AddActor(enemySpawner);
+	world->AddActor(player);
+	world->AddActor(staticAudioPlayer);
+	world->AddActor(playerDeathStaticAudioPlayer);
+	world->AddActor(crosshair);
+	world->AddActor(playerScoreText);
 
 	world->Tick();
 

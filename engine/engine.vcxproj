@@ -96,17 +96,17 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\SDL2\include;$(SolutionDir)engine\src;$(SolutionDir)dependencies\SDL2_image\include;$(SolutionDir)dependencies\SDL2_mixer\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\SDL2\include;$(SolutionDir)engine\src;$(SolutionDir)dependencies\SDL2_image\include;$(SolutionDir)dependencies\SDL2_mixer\include;$(SolutionDir)dependencies\SDL2_ttf\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\SDL2\lib\x64;$(SolutionDir)dependencies\SDL2_image\lib\x64;$(SolutionDir)dependencies\SDL2_mixer\lib\x64</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\SDL2\lib\x64;$(SolutionDir)dependencies\SDL2_image\lib\x64;$(SolutionDir)dependencies\SDL2_mixer\lib\x64;$(SolutionDir)dependencies\SDL2_ttf\lib\x64</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -117,7 +117,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\SDL2\include;$(SolutionDir)engine\src;$(SolutionDir)dependencies\SDL2_image\include;$(SolutionDir)dependencies\SDL2_mixer\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\SDL2\include;$(SolutionDir)engine\src;$(SolutionDir)dependencies\SDL2_image\include;$(SolutionDir)dependencies\SDL2_mixer\include;$(SolutionDir)dependencies\SDL2_ttf\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -126,10 +126,10 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\SDL2\lib\x64;$(SolutionDir)dependencies\SDL2_image\lib\x64;$(SolutionDir)dependencies\SDL2_mixer\lib\x64</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\SDL2\lib\x64;$(SolutionDir)dependencies\SDL2_image\lib\x64;$(SolutionDir)dependencies\SDL2_mixer\lib\x64;$(SolutionDir)dependencies\SDL2_ttf\lib\x64</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -138,17 +138,17 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\SDL2\include;$(SolutionDir)engine\src;$(SolutionDir)dependencies\SDL2_image\include;$(SolutionDir)dependencies\SDL2_mixer\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\SDL2\include;$(SolutionDir)engine\src;$(SolutionDir)dependencies\SDL2_image\include;$(SolutionDir)dependencies\SDL2_mixer\include;$(SolutionDir)dependencies\SDL2_ttf\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\SDL2\lib\x64;$(SolutionDir)dependencies\SDL2_image\lib\x64;$(SolutionDir)dependencies\SDL2_mixer\lib\x64</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\SDL2\lib\x64;$(SolutionDir)dependencies\SDL2_image\lib\x64;$(SolutionDir)dependencies\SDL2_mixer\lib\x64;$(SolutionDir)dependencies\SDL2_ttf\lib\x64</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -159,7 +159,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\SDL2\include;$(SolutionDir)engine\src;$(SolutionDir)dependencies\SDL2_image\include;$(SolutionDir)dependencies\SDL2_mixer\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\SDL2\include;$(SolutionDir)engine\src;$(SolutionDir)dependencies\SDL2_image\include;$(SolutionDir)dependencies\SDL2_mixer\include;$(SolutionDir)dependencies\SDL2_ttf\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -168,16 +168,17 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\SDL2\lib\x64;$(SolutionDir)dependencies\SDL2_image\lib\x64;$(SolutionDir)dependencies\SDL2_mixer\lib\x64</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\SDL2\lib\x64;$(SolutionDir)dependencies\SDL2_image\lib\x64;$(SolutionDir)dependencies\SDL2_mixer\lib\x64;$(SolutionDir)dependencies\SDL2_ttf\lib\x64</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\core\blueprints\components\audio_player.h" />
     <ClInclude Include="src\core\blueprints\components\box_collider_2D.h" />
     <ClInclude Include="src\core\blueprints\components\sprite_renderer.h" />
+    <ClInclude Include="src\core\blueprints\components\text.h" />
     <ClInclude Include="src\core\blueprints\components\transform.h" />
     <ClInclude Include="src\core\common\actor.h" />
     <ClInclude Include="src\core\common\component.h" />
@@ -190,6 +191,7 @@
     <ClInclude Include="src\math\vector2D.h" />
     <ClInclude Include="src\physics\ray.h" />
     <ClInclude Include="src\physics\raycast2D.h" />
+    <ClInclude Include="src\public\color.h" />
     <ClInclude Include="src\public\engine_entry.h" />
     <ClInclude Include="src\utils\audio.h" />
     <ClInclude Include="src\utils\img.h" />
@@ -198,6 +200,7 @@
     <ClCompile Include="src\core\blueprints\components\audio_player.cpp" />
     <ClCompile Include="src\core\blueprints\components\box_collider_2D.cpp" />
     <ClCompile Include="src\core\blueprints\components\sprite_renderer.cpp" />
+    <ClCompile Include="src\core\blueprints\components\text.cpp" />
     <ClCompile Include="src\core\blueprints\components\transform.cpp" />
     <ClCompile Include="src\core\common\actor.cpp" />
     <ClCompile Include="src\core\common\world.cpp" />

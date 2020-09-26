@@ -71,3 +71,11 @@ void BlueprintManager::CraftCrosshair(engine::EngineEntry* engineEntry, engine::
 	crosshair->AddComponent<engine::SpriteRenderer>(crosshair, engineEntry, "assets/imgs/ui/crosshair.png");
 	crosshair->AddComponent<Crosshair>(crosshair);
 }
+
+void BlueprintManager::CraftText(engine::EngineEntry* engineEntry, engine::Actor* actor, engine::Vector2D position, engine::Vector2D scale, 
+	const std::string& path, const std::string& initialText, int fontSize, engine::Color color)
+{
+	assert(actor != nullptr);
+	actor->AddComponent<engine::Transform>(actor, position, scale);
+	actor->AddComponent<engine::Text>(actor, engineEntry, path, initialText, fontSize, color);
+}

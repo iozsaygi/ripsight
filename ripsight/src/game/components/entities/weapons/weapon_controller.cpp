@@ -9,6 +9,7 @@ void WeaponController::Birth()
 	m_StaticAudioPlayer = GetOwner()->GetOwnerWorld()->GetActorByName("Static Audio Player")->GetComponent<engine::AudioPlayer>();
 	m_Player = GetOwner()->GetComponent<Player>();
 	m_EnemySpawner = GetOwner()->GetOwnerWorld()->GetActorByName("Enemy Spawner")->GetComponent<EnemySpawner>();
+	m_PlayerScoreText = GetOwner()->GetOwnerWorld()->GetActorByName("Player Score Text")->GetComponent<engine::Text>();
 }
 
 void WeaponController::OnTick(float deltaTime)
@@ -64,12 +65,11 @@ void WeaponController::Fire()
 						int cScore = m_Player->GetScore();
 						if (cScore % 50 == 0)
 							m_EnemySpawner->SetSpawnRate(m_EnemySpawner->GetSpawnRate() - 0.5f);
+
+						auto convertedScore = std::to_string(cScore);
+						m_PlayerScoreText->UpdateText(convertedScore);
 					}
 				}
-			}
-			else
-			{
-				std::cout << "Failed to fetch enemy data from raycast!" << std::endl;
 			}
 		}
 

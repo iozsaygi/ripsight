@@ -26,8 +26,6 @@ public:
 	void OnCollision(engine::Actor* other);
 
 private:
-	static int s_Lives;
-
 	engine::Vector2D m_Velocity;
 	engine::Transform* m_OwnerTransform = nullptr;
 	engine::SpriteRenderer* m_OwnerSpriteRenderer = nullptr;

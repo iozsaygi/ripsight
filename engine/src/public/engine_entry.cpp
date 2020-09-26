@@ -1,5 +1,6 @@
 #include <SDL_image.h>
 #include <SDL_mixer.h>
+#include <SDL_ttf.h>
 #include "engine_entry.h"
 
 namespace engine
@@ -36,6 +37,12 @@ namespace engine
 			return;
 		}
 
+		if (TTF_Init() == -1)
+		{
+			SDL_Log("SDL_ttf could not initialize! SDL_ttf Error: %s\n", TTF_GetError());
+			return;
+		}
+
 		SDL_SetWindowTitle(m_Window, title.c_str());
 		SDL_ShowCursor(SDL_DISABLE);
 		SDL_Log("Engine entry created!");
@@ -47,6 +54,7 @@ namespace engine
 
 		IMG_Quit();
 		Mix_CloseAudio();
+		TTF_Quit();
 		SDL_DestroyRenderer(m_Renderer);
 		SDL_DestroyWindow(m_Window);
 		SDL_Quit();

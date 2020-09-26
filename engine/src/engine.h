@@ -6,6 +6,7 @@
 #include "core/blueprints/components/audio_player.h"
 #include "core/blueprints/components/box_collider_2D.h"
 #include "core/blueprints/components/sprite_renderer.h"
+#include "core/blueprints/components/text.h"
 #include "core/blueprints/components/transform.h"
 
 // core
@@ -25,6 +26,7 @@
 #include "physics/raycast2D.h"
 
 // public
+#include "public/color.h"
 #include "public/engine_entry.h"
 
 #endif // !ENGINE_H

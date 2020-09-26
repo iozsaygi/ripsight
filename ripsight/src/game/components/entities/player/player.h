@@ -10,6 +10,7 @@ public:
 
 	void AddScore(int value);
 	int GetScore();
+	void SetScore(int value);
 
 private:
 	int m_Score = 0;

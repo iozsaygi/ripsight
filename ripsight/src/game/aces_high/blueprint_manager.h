@@ -1,6 +1,7 @@
 #ifndef BLUEPRINT_MANAGER_H
 #define BLUEPRINT_MANAGER_H
 
+#include <string>
 #include "engine.h"
 
 class BlueprintManager
@@ -14,6 +15,9 @@ public:
 	static void CraftButton(engine::EngineEntry* engineEntry, engine::Actor* actor);
 	static void CraftPlayerDeathAudioPlayer(engine::Actor* actor);
 	static void CraftCrosshair(engine::EngineEntry* engineEntry, engine::Actor* crosshair);
+
+	static void CraftText(engine::EngineEntry* engineEntry, engine::Actor* actor, engine::Vector2D position, engine::Vector2D scale, 
+		const std::string& path, const std::string& initialText, int fontSize, engine::Color color);
 };
 
 #endif // !BLUEPRINT_MANAGER_H

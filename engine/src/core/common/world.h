@@ -6,6 +6,7 @@
 #include "public/engine_entry.h"
 #include "core/blueprints/components/box_collider_2D.h"
 #include "core/blueprints/components/sprite_renderer.h"
+#include "core/blueprints/components/text.h"
 #include "core/common/actor.h"
 
 namespace engine
@@ -41,11 +42,13 @@ namespace engine
 		std::vector<Actor*> m_ActorsToDestroy;
 		std::vector<SpriteRenderer*> m_RenderersInWorld;
 		std::vector<BoxCollider2D*> m_CollidersInWorld;
+		std::vector<Text*> m_Texts;
 
 		void ProcessEvents();
 		void UpdateActors(float deltaTime);
 		void HandleCollisions();
 		void Render();
+		void RenderUI();
 		void DestroyMarkedActors();
 	};
 }

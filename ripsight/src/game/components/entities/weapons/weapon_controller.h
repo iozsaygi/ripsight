@@ -27,6 +27,7 @@ private:
 	engine::AudioPlayer* m_StaticAudioPlayer = nullptr;
 	Player* m_Player = nullptr;
 	EnemySpawner* m_EnemySpawner = nullptr;
+	engine::Text* m_PlayerScoreText = nullptr;
 };
 
 #endif // !WEAPON_CONTROLLER_H

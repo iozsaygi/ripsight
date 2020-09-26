@@ -6,10 +6,14 @@ void Player::AddScore(int value)
 {
 	assert(value > 0);
 	m_Score += value;
-	std::cout << "Current score: " << GetScore() << std::endl;
 }
 
 int Player::GetScore()
 {
 	return m_Score;
+}
+
+void Player::SetScore(int value)
+{
+	m_Score = value;
 }

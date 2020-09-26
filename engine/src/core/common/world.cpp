@@ -13,6 +13,7 @@ namespace engine
 		m_ActorsToDestroy = std::vector<Actor*>();
 		m_RenderersInWorld = std::vector<SpriteRenderer*>();
 		m_CollidersInWorld = std::vector<BoxCollider2D*>();
+		m_Texts = std::vector<Text*>();
 	}
 
 	World::World(EngineEntry* engineEntry, bool isActive)
@@ -23,6 +24,7 @@ namespace engine
 		m_ActorsToDestroy = std::vector<Actor*>();
 		m_RenderersInWorld = std::vector<SpriteRenderer*>();
 		m_CollidersInWorld = std::vector<BoxCollider2D*>();
+		m_Texts = std::vector<Text*>();
 		m_IsActive = isActive;
 	}
 
@@ -34,6 +36,7 @@ namespace engine
 		m_Actors.clear();
 		m_RenderersInWorld.clear();
 		m_CollidersInWorld.clear();
+		m_Texts.clear();
 	}
 
 	void World::Tick()
@@ -49,6 +52,10 @@ namespace engine
 				BoxCollider2D* boxCollider2D = actor->GetComponent<BoxCollider2D>();
 				if (boxCollider2D != nullptr && boxCollider2D->GetIsEnabled())
 					m_CollidersInWorld.push_back(boxCollider2D);
+
+				Text* text = actor->GetComponent<Text>();
+				if (text != nullptr)
+					m_Texts.push_back(text);
 			}
 		}
 
@@ -90,6 +97,7 @@ namespace engine
 			UpdateActors(deltaTime);
 			HandleCollisions();
 			Render();
+			RenderUI();
 			DestroyMarkedActors();
 
 			frameTime = SDL_GetTicks() - frameStart;
@@ -142,6 +150,10 @@ namespace engine
 			BoxCollider2D* boxCollider2D = actor->GetComponent<BoxCollider2D>();
 			if (boxCollider2D != nullptr && boxCollider2D->GetIsEnabled())
 				m_CollidersInWorld.push_back(boxCollider2D);
+
+			Text* text = actor->GetComponent<Text>();
+			if (text != nullptr)
+				m_Texts.push_back(text);
 		}
 	}
 
@@ -218,6 +230,18 @@ namespace engine
 		}
 	}
 
+	void World::RenderUI()
+	{
+		auto renderer = m_EngineEntry->GetRenderer();
+		if (renderer != nullptr)
+		{
+			for (auto text : m_Texts)
+				text->Render();
+
+			SDL_RenderPresent(renderer);
+		}
+	}
+
 	void World::DestroyMarkedActors()
 	{
 		for (auto actor : m_ActorsToDestroy)
@@ -242,6 +266,14 @@ namespace engine
 				auto colliderRemoveIt = std::find(m_CollidersInWorld.begin(), m_CollidersInWorld.end(), boxCollider2D);
 				if (colliderRemoveIt != m_CollidersInWorld.end())
 					m_CollidersInWorld.erase(colliderRemoveIt);
+			}
+
+			Text* text = actor->GetComponent<Text>();
+			if (text != nullptr)
+			{
+				auto textRemoveIt = std::find(m_Texts.begin(), m_Texts.end(), text);
+				if (textRemoveIt != m_Texts.end())
+					m_Texts.erase(textRemoveIt);
 			}
 
 			delete actor;
