@@ -3,7 +3,9 @@
 </p>
 
 ## About
-Ripsight is a 2D top down game that is currently under development. This page will be updated frequently with the progress of game.
+Ripsight is a 2D Top-Down-Shooter game which built with custom game engine in 22 days. </br>
+The engine supports the "Entity Component" architecture and built on top of SDL library. </br>
+The game eventually became somewhat moddable, player can change the in-game visuals/effects by changing the files in "assets" folder. </br>
 
 ## Dependencies
   * [SDL2](https://www.libsdl.org/)
