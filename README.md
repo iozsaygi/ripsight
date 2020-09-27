@@ -13,5 +13,15 @@ The game eventually became somewhat moddable, player can change the in-game visu
   * [SDL_mixer](https://www.libsdl.org/projects/SDL_mixer/index.html)
   * [SDL_ttf](https://www.libsdl.org/projects/SDL_ttf/)
   
+## Credits
+  * <b>Programming</b>
+    * Ismail Ozsaygi
+  * <b>Art</b>
+    * Kenney
+    * hassekf
+    * PWL
+  * <b>Audio</b>
+    * Michael Baradari
+  
 ## License
 [MIT License](https://github.com/iozsaygi/ripsight/blob/master/LICENSE)
