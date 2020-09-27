@@ -21,10 +21,10 @@ void EnemySpawner::OnTick(float deltaTime)
 
 void EnemySpawner::Spawn()
 {
-	assert(m_MinSpawnCount < m_MaxSpawnCount);
+	assert( m_MinSpawnCount < m_MaxSpawnCount );
 
 	// Do not even spawn new enemy if player is unknown or inactive.
-	if (m_PlayerReference == nullptr || !m_PlayerReference->GetIsActive())
+	if ( m_PlayerReference == nullptr || !m_PlayerReference->GetIsActive() )
 		return;
 
 	// Which side of the map we want to generate zombies in?
@@ -99,6 +99,6 @@ void EnemySpawner::SetSpawnRate(float spawnRate)
 	if (spawnRate >= 1.0f && spawnRate != m_SpawnRate)
 	{
 		m_SpawnRate = spawnRate;
-		std::cout << "Enemy spawn rate updated to: " << spawnRate << std::endl;
+		 // std::cout << "Enemy spawn rate updated to: " << spawnRate << std::endl; !?!?
 	}
 }

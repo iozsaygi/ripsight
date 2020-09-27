@@ -7,6 +7,7 @@
 #include "game/components/ui/button.h"
 #include "game/components/ui/crosshair.h"
 #include "game/components/entities/player/player.h"
+#include "game/components/common/destroy_me.h"
 #include "blueprint_manager.h"
 
 void BlueprintManager::CraftBackground(engine::EngineEntry* engineEntry, engine::Actor* actor)
@@ -24,7 +25,7 @@ void BlueprintManager::CraftPlayer(engine::EngineEntry* engineEntry, engine::Act
 	player->AddComponent<engine::BoxCollider2D>(player, engine::Vector2D(48, 48));
 	player->AddComponent<Player>(player);
 	player->AddComponent<PlayerController>(player, engineEntry, engine::Vector2D(3.0f, 3.0f));
-	player->AddComponent<WeaponController>(player, WeaponInfo::GetPistolInfo());
+	player->AddComponent<WeaponController>(engineEntry, player, WeaponInfo::GetPistolInfo());
 	player->AddComponent<engine::AudioPlayer>(player, "assets/audio/wpn/pistol_fire.wav");
 }
 
@@ -72,10 +73,18 @@ void BlueprintManager::CraftCrosshair(engine::EngineEntry* engineEntry, engine::
 	crosshair->AddComponent<Crosshair>(crosshair);
 }
 
-void BlueprintManager::CraftText(engine::EngineEntry* engineEntry, engine::Actor* actor, engine::Vector2D position, engine::Vector2D scale, 
+void BlueprintManager::CraftText(engine::EngineEntry* engineEntry, engine::Actor* actor, engine::Vector2D position, engine::Vector2D scale,
 	const std::string& path, const std::string& initialText, int fontSize, engine::Color color)
 {
 	assert(actor != nullptr);
 	actor->AddComponent<engine::Transform>(actor, position, scale);
 	actor->AddComponent<engine::Text>(actor, engineEntry, path, initialText, fontSize, color);
+}
+
+void BlueprintManager::CraftBloodSplash(engine::EngineEntry* engineEntry, engine::Actor* actor, engine::Vector2D position)
+{
+	assert(actor != nullptr);
+	actor->AddComponent<engine::Transform>(actor, position, engine::Vector2D(64, 64));
+	actor->AddComponent<engine::SpriteRenderer>(actor, engineEntry, "assets/imgs/effects/blood_splash.png");
+	actor->AddComponent<DestroyMe>(actor, 3.0f);
 }

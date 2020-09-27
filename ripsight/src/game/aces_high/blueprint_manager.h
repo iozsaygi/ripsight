@@ -18,6 +18,8 @@ public:
 
 	static void CraftText(engine::EngineEntry* engineEntry, engine::Actor* actor, engine::Vector2D position, engine::Vector2D scale, 
 		const std::string& path, const std::string& initialText, int fontSize, engine::Color color);
+
+	static void CraftBloodSplash(engine::EngineEntry* engineEntry, engine::Actor* actor, engine::Vector2D position);
 };
 
 #endif // !BLUEPRINT_MANAGER_H

@@ -184,6 +184,7 @@
     <ClInclude Include="src\game\aces_high\blueprint_manager.h" />
     <ClInclude Include="src\game\components\ai\chase_controller.h" />
     <ClInclude Include="src\game\components\common\damageable.h" />
+    <ClInclude Include="src\game\components\common\destroy_me.h" />
     <ClInclude Include="src\game\components\entities\player\player.h" />
     <ClInclude Include="src\game\components\entities\player\player_controller.h" />
     <ClInclude Include="src\game\components\entities\spawners\enemy_spawner.h" />

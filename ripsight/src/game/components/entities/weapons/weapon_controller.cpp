@@ -1,6 +1,7 @@
 #include <iostream>
 #include "game/components/common/damageable.h"
 #include "game/components/ai/chase_controller.h"
+#include "game/aces_high/blueprint_manager.h"
 #include "weapon_controller.h"
 
 void WeaponController::Birth()
@@ -57,6 +58,13 @@ void WeaponController::Fire()
 					}
 					else
 					{
+						auto actorPosition = actor->GetComponent<engine::Transform>()->GetPosition();
+						engine::Actor* bloodSplash = new engine::Actor("Blood Splash");
+						BlueprintManager::CraftBloodSplash(m_EngineEntry, bloodSplash, actorPosition);
+						engine::WorldManager::GetActiveWorld()->AddActorRuntime(bloodSplash);
+
+						auto x = bloodSplash->GetComponent<engine::Transform>();
+
 						m_StaticAudioPlayer->PlayOneShot(1, 120);
 						actor->GetOwnerWorld()->ScheduleActorForDestroy(actor);
 						m_Player->AddScore(10);

@@ -9,8 +9,10 @@
 class WeaponController : public engine::Component
 {
 public:
-	WeaponController(engine::Actor* owner, const WeaponInfo& weaponInfo) : Component(owner)
+	inline WeaponController(engine::EngineEntry* engineEntry, engine::Actor* owner, const WeaponInfo& weaponInfo) : Component(owner)
 	{
+		m_EngineEntry = engineEntry;
+
 		m_WeaponInfo.SetDamage(weaponInfo.GetPistolInfo().GetDamage());
 		m_WeaponInfo.SetFireRate(weaponInfo.GetPistolInfo().GetFireRate());
 		m_WeaponInfo.SetRange(weaponInfo.GetPistolInfo().GetRange());
@@ -28,6 +30,7 @@ private:
 	Player* m_Player = nullptr;
 	EnemySpawner* m_EnemySpawner = nullptr;
 	engine::Text* m_PlayerScoreText = nullptr;
+	engine::EngineEntry* m_EngineEntry = nullptr;
 };
 
 #endif // !WEAPON_CONTROLLER_H
